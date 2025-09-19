@@ -26,18 +26,20 @@ public class Check_Checkpoints : MonoBehaviour
     }
     private void Update()
     {
-        if (index == MaxCheckpoints)
-        {
-            CheckpointsList[index].SetActive(false);
-            index = 0;
-            CheckpointsList[0].SetActive(true);
-            print("reseted");
-        }
-
+        
         if (index >  0)
         {
             CheckpointsList[index-1].SetActive(false);
-            CheckpointsList[index].SetActive(true);
+            if(CheckpointsList.Length > index)
+            {
+                CheckpointsList[index].SetActive(true);
+            }
+            if(CheckpointsList.Length == index)
+            {
+                CheckpointsList[0].SetActive(true);
+                index = 0;
+                
+            }
 
         }
 
@@ -45,7 +47,10 @@ public class Check_Checkpoints : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        index++;
+        if (index < MaxCheckpoints)
+        {
+            index++;
+        }
         //Checkpoints(other);
     }
 
