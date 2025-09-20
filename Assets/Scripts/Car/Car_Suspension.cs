@@ -30,7 +30,7 @@ public class Car_Suspension : MonoBehaviour
     void carSuspension(Ray ray, Vector3 rayOrigin, Vector3 rayDirection, float springForce, float restDistance, float springDamper, Transform tireTransform, Rigidbody rb)
     {
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(origin,direction, out hit, carStats.restDistance))
         {
 
             Debug.DrawRay(origin, direction);

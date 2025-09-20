@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Check_Checkpoints : MonoBehaviour
 {
-    public static event Action<bool> Reseting;
+    //public static event Action<bool> Reseting;
     public GameObject[] CheckpointsList;
     int index = 0;
     int MaxCheckpoints;
