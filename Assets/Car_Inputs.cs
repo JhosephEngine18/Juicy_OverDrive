@@ -188,6 +188,28 @@ public partial class @Car_Inputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""left"",
+                    ""id"": ""a96b96a9-b8e6-4db0-83c4-7545d048e2fb"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turning"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""ca1b0a84-187e-4992-90f0-8bb5c200a5c8"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turning"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""3D Vector"",
                     ""id"": ""8b814a4c-f4da-422d-bf9e-eccde624a86e"",
                     ""path"": ""3DVector"",
@@ -213,6 +235,28 @@ public partial class @Car_Inputs: IInputActionCollection2, IDisposable
                     ""name"": ""backward"",
                     ""id"": ""55c75cce-603a-4c8b-a5f0-e6b6b6a71053"",
                     ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Forward/Backward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""60e77a57-0dcb-4c41-a305-99cf71d3bd5a"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Forward/Backward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""backward"",
+                    ""id"": ""1871c825-5f21-406d-90fd-528c7b49bd5a"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
