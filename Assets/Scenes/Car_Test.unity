@@ -276,34 +276,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2732267142484893255, guid: d3d292e4d68130143ae5117e77648ed6, type: 3}
-      propertyPath: carStats
-      value: 
-      objectReference: {fileID: 11400000, guid: 24d19ae99259d3344b8a7eb46c3e00e1, type: 2}
-    - target: {fileID: 4155928561184173311, guid: d3d292e4d68130143ae5117e77648ed6, type: 3}
-      propertyPath: carStats
-      value: 
-      objectReference: {fileID: 11400000, guid: 24d19ae99259d3344b8a7eb46c3e00e1, type: 2}
-    - target: {fileID: 4870710870118009059, guid: d3d292e4d68130143ae5117e77648ed6, type: 3}
-      propertyPath: carStats
-      value: 
-      objectReference: {fileID: 11400000, guid: 24d19ae99259d3344b8a7eb46c3e00e1, type: 2}
-    - target: {fileID: 5435245888065516441, guid: d3d292e4d68130143ae5117e77648ed6, type: 3}
-      propertyPath: carStats
-      value: 
-      objectReference: {fileID: 11400000, guid: 24d19ae99259d3344b8a7eb46c3e00e1, type: 2}
-    - target: {fileID: 5459540790373441749, guid: d3d292e4d68130143ae5117e77648ed6, type: 3}
-      propertyPath: carStats
-      value: 
-      objectReference: {fileID: 11400000, guid: 24d19ae99259d3344b8a7eb46c3e00e1, type: 2}
     - target: {fileID: 6982928889780761587, guid: d3d292e4d68130143ae5117e77648ed6, type: 3}
       propertyPath: m_Name
       value: Car
       objectReference: {fileID: 0}
-    - target: {fileID: 8282891450082412126, guid: d3d292e4d68130143ae5117e77648ed6, type: 3}
-      propertyPath: carStats
-      value: 
-      objectReference: {fileID: 11400000, guid: 24d19ae99259d3344b8a7eb46c3e00e1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
