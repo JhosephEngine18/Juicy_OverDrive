@@ -62,13 +62,14 @@ public class Player_Input : MonoBehaviour
         }else if (accelerationDirection.z == -1)
         {
             Acceleration = Mathf.Lerp(carStats.minSpeed, carStats.maxSpeed, T);
-            T += 0.1f * Time.deltaTime;
+            T += 0.1f * Time.deltaTime* Acceleration;
             Debug.Log(Acceleration);
             carRigidbody.AddForceAtPosition(-moveDirection * Acceleration, wheelTransform.position);
         }
         else if(accelerationDirection.x == 0)
         {
-            T = Mathf.Max(0, T - 0.50f * Time.deltaTime);
+            Acceleration = Mathf.Lerp(carStats.minSpeed, carStats.maxSpeed, T);
+            T -= 0.1f * Time.deltaTime;
             Debug.Log(Acceleration);
         }
     }

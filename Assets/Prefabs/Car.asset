@@ -18,7 +18,7 @@ MonoBehaviour:
   turnSpeed: 25
   minSpeed: 0
   maxSpeed: 5
-  T: 1
+  T: 0
   frontTireGrip: 1
   backTireGrip: 0.75
   tireMass: 1
