@@ -15,6 +15,10 @@ public class frontWheelTurning : MonoBehaviour
     private Vector2 steeringInput;
     private Vector3 steeringDirection;
     private Vector3 tireWorldVelocity;
+    
+    private float currentRotation = 0f;
+    private float minRotation = 0f;
+
     private void Start()
     {
         wheelTransform = gameObject.GetComponent<Transform>();
@@ -43,6 +47,8 @@ public class frontWheelTurning : MonoBehaviour
 
     void wheelControl()
     {
+        currentRotation = Mathf.Lerp(minRotation, carStats.turnSpeed, Time.deltaTime * 25f);
+        
         steeringDirection = wheelTransform.right;
         tireWorldVelocity = carRigidbody.GetPointVelocity(wheelTransform.position);
         float steeringVelocity = Vector3.Dot(steeringDirection, tireWorldVelocity);
@@ -52,6 +58,6 @@ public class frontWheelTurning : MonoBehaviour
         carRigidbody.AddForceAtPosition(steeringDirection * carStats.tireMass * turningRate, wheelTransform.position);
         
         steeringInput = playerDirection.ReadValue<Vector2>();
-        wheelTransform.localRotation = Quaternion.Euler(0,steeringInput.x * carStats.turnSpeed , 0);
+        wheelTransform.localRotation = Quaternion.Euler(0, steeringInput.x * carStats.turnSpeed, 0);
     }
 }

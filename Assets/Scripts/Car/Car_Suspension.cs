@@ -6,8 +6,6 @@ public class Car_Suspension : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private Car carStats;
 
-    Ray ray;
-
     Vector3 origin;
     Vector3 direction;
 
@@ -22,12 +20,11 @@ public class Car_Suspension : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        ray = new Ray(origin, direction);
         origin = wheelTransform.position;
         direction = Vector3.down;
-        carSuspension(ray, origin, direction, carStats.springForce, carStats.restDistance, carStats.springDamper, wheelTransform, carRigidBody);
+        carSuspension(origin, direction, carStats.springForce, carStats.restDistance, carStats.springDamper, wheelTransform, carRigidBody);
     }
-    void carSuspension(Ray ray, Vector3 rayOrigin, Vector3 rayDirection, float springForce, float restDistance, float springDamper, Transform tireTransform, Rigidbody rb)
+    void carSuspension(Vector3 rayOrigin, Vector3 rayDirection, float springForce, float restDistance, float springDamper, Transform tireTransform, Rigidbody rb)
     {
         RaycastHit hit;
         if (Physics.Raycast(origin,direction, out hit, carStats.restDistance))

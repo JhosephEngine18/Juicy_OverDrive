@@ -10,6 +10,8 @@ public class Player_Input : MonoBehaviour
     private float T =0.0f;
     private float Acceleration;
     private float Decceleration;
+    private float speedLimit = 30;
+    private float currentSpeed;
     
     Car_Inputs car;
     private InputAction playerDirection;
@@ -57,22 +59,26 @@ public class Player_Input : MonoBehaviour
         {
             Acceleration = Mathf.Lerp(carStats.minSpeed, carStats.maxSpeed, T);
             T += 0.1f * Time.deltaTime;
-            Debug.Log(Acceleration);
             carRigidbody.AddForceAtPosition(moveDirection * Acceleration, wheelTransform.position);
+            checkVelocity();
         }else if (accelerationDirection.z == -1)
         {
             Acceleration = Mathf.Lerp(carStats.minSpeed, carStats.maxSpeed, T);
             T += 0.1f * Time.deltaTime* Acceleration;
-            Debug.Log(Acceleration);
             carRigidbody.AddForceAtPosition(-moveDirection * Acceleration, wheelTransform.position);
+            checkVelocity();
         }
-        else if(accelerationDirection.x == 0)
-        {
-            Acceleration = Mathf.Lerp(carStats.minSpeed, carStats.maxSpeed, T);
-            T -= 0.1f * Time.deltaTime;
-            Debug.Log(Acceleration);
-        }
+        
     }
 
-    
+    void checkVelocity()
+    {
+        currentSpeed = carRigidbody.linearVelocity.magnitude;
+        float offset = currentSpeed - speedLimit;
+        if (currentSpeed > speedLimit)
+        {
+            carRigidbody.AddForceAtPosition(-moveDirection * offset, wheelTransform.position);
+            Debug.Log("car speed: " + carRigidbody.linearVelocity.magnitude);
+        }
+    }
 }
