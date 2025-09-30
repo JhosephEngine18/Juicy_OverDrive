@@ -118,13 +118,22 @@ public partial class @Car_Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drift"",
+                    ""type"": ""Button"",
+                    ""id"": ""3859d5c0-c49e-4ec8-b5ca-ca89863e5f65"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""9e185537-7b87-4afd-892e-93586ad03ccc"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -263,6 +272,17 @@ public partial class @Car_Inputs: IInputActionCollection2, IDisposable
                     ""action"": ""Forward/Backward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8833448b-7404-4be5-ba9a-c2f69e4e2c72"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drift"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -274,6 +294,7 @@ public partial class @Car_Inputs: IInputActionCollection2, IDisposable
         m_Player_Turning = m_Player.FindAction("Turning", throwIfNotFound: true);
         m_Player_ForwardBackward = m_Player.FindAction("Forward/Backward", throwIfNotFound: true);
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
+        m_Player_Drift = m_Player.FindAction("Drift", throwIfNotFound: true);
     }
 
     ~@Car_Inputs()
@@ -357,6 +378,7 @@ public partial class @Car_Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Turning;
     private readonly InputAction m_Player_ForwardBackward;
     private readonly InputAction m_Player_Throw;
+    private readonly InputAction m_Player_Drift;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -380,6 +402,10 @@ public partial class @Car_Inputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Throw".
         /// </summary>
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Drift".
+        /// </summary>
+        public InputAction @Drift => m_Wrapper.m_Player_Drift;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -415,6 +441,9 @@ public partial class @Car_Inputs: IInputActionCollection2, IDisposable
             @Throw.started += instance.OnThrow;
             @Throw.performed += instance.OnThrow;
             @Throw.canceled += instance.OnThrow;
+            @Drift.started += instance.OnDrift;
+            @Drift.performed += instance.OnDrift;
+            @Drift.canceled += instance.OnDrift;
         }
 
         /// <summary>
@@ -435,6 +464,9 @@ public partial class @Car_Inputs: IInputActionCollection2, IDisposable
             @Throw.started -= instance.OnThrow;
             @Throw.performed -= instance.OnThrow;
             @Throw.canceled -= instance.OnThrow;
+            @Drift.started -= instance.OnDrift;
+            @Drift.performed -= instance.OnDrift;
+            @Drift.canceled -= instance.OnDrift;
         }
 
         /// <summary>
@@ -496,5 +528,12 @@ public partial class @Car_Inputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnThrow(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Drift" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDrift(InputAction.CallbackContext context);
     }
 }

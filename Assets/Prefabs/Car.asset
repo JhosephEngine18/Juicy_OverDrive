@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   springForce: 75
   restDistance: 0.5
-  springDamper: 10
-  turnSpeed: 10
+  springDamper: 5
+  turnSpeed: 6
   minSpeed: 0
   maxSpeed: 2
   T: 0
