@@ -99,9 +99,6 @@ public class Player_Input : MonoBehaviour
     void Drift(Quaternion currentRotation, Quaternion minDriftAngle, Quaternion maxDriftAngle)
     {
         Debug.Log("current Rotation: " + currentRotation.z);
-        if (carRigidbody.rotation.y < maxDriftAngle.y)
-        {
-            carRigidbody.rotation = currentRotation * Quaternion.Lerp(minDriftAngle, maxDriftAngle, 0.1f * Time.fixedDeltaTime);
-        }
+        carRigidbody.rotation = currentRotation * Quaternion.Lerp(minDriftAngle, maxDriftAngle, 0.1f * Time.fixedDeltaTime);
     }
 }
