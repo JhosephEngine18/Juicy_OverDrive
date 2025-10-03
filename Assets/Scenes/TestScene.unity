@@ -501,6 +501,7 @@ MonoBehaviour:
   - {fileID: 318359561}
   - {fileID: 1749446544}
   - {fileID: 1096237148}
+  Goal: {fileID: 0}
 --- !u!1 &734673553
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,6 +2055,7 @@ MonoBehaviour:
   - {fileID: 318359561}
   - {fileID: 1749446544}
   - {fileID: 1096237148}
+  Goal: {fileID: 0}
 --- !u!1 &1827521565
 GameObject:
   m_ObjectHideFlags: 0
