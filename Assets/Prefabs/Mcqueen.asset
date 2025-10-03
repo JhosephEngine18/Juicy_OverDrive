@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16de6198a0e316b478e8b62a19b6eb89, type: 3}
+  m_Name: Mcqueen
+  m_EditorClassIdentifier: 
+  springForce: 75
+  restDistance: -0.11
+  springDamper: 1.47
+  turnSpeed: 6
+  minSpeed: 5
+  maxSpeed: 30
+  T: 0
+  frontTireGrip: 1
+  backTireGrip: 0.5
+  tireMass: 10

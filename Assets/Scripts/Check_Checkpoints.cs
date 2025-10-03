@@ -11,7 +11,7 @@ public class Check_Checkpoints : MonoBehaviour
     int Laps = 0;
     int index = 0;
     int MaxCheckpoints;
-    public static event Action<int> OnLapChecked;
+    //public static event Action<int> OnLapChecked;
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class Check_Checkpoints : MonoBehaviour
         {
             MaxCheckpoints = i + 1;
         }
-
+        Goal.SetActive(false);
         print(MaxCheckpoints);
     }
     private void Update()
@@ -44,22 +44,20 @@ public class Check_Checkpoints : MonoBehaviour
             }
 
         }
-
-
-
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (index < MaxCheckpoints)
+        if (index < MaxCheckpoints && !other.CompareTag("Goal"))
         {
             index++;
         }
 
-        if (other == Goal)
+        if (other.CompareTag("Goal") == other)
         {
             Laps++;
-            OnLapChecked(Laps);
+            //OnLapChecked(Laps);
             Goal.SetActive(false);
         }
 
