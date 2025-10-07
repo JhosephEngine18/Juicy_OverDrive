@@ -34,6 +34,10 @@ public class NPC : MonoBehaviour
             {
                 index++;
                 Debug.Log("Found it");
+                if (index >= _checkCheckpoints.Length)
+                {
+                    index = 0;
+                }
             }
         }
 }
