@@ -1504,6 +1504,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8320562041091413669, guid: 4324a5c7a66814c40b5161792de1190a, type: 3}
+      propertyPath: Movespeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320562041091413669, guid: 4324a5c7a66814c40b5161792de1190a, type: 3}
+      propertyPath: TurningSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320562041091413669, guid: 4324a5c7a66814c40b5161792de1190a, type: 3}
       propertyPath: _checkCheckpoints
       value: 
       objectReference: {fileID: 7726210466998116246}

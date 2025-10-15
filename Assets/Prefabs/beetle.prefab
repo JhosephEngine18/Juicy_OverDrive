@@ -222,7 +222,6 @@ GameObject:
   - component: {fileID: 2411460143866020048}
   - component: {fileID: 5406435086231385001}
   - component: {fileID: 1781709536865273765}
-  - component: {fileID: 3645633112285676288}
   m_Layer: 0
   m_Name: beetle
   m_TagString: Untagged
@@ -399,22 +398,6 @@ MonoBehaviour:
   trackCheckpoints: {fileID: 2411460143866020048}
   currentCheckpoint: 0
   laps: 0
---- !u!208 &3645633112285676288
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135325929572239513}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.813, y: 0.688, z: 2.0310001}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 1, z: 0.28100002}
-  m_TimeToStationary: 0.5
 --- !u!1 &6369769324028426549
 GameObject:
   m_ObjectHideFlags: 0

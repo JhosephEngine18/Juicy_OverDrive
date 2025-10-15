@@ -49,7 +49,7 @@ public class Check_Checkpoints : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (index < MaxCheckpoints && !other.CompareTag("Goal"))
+        if (index < MaxCheckpoints && !other.CompareTag("Goal") && CheckpointsList[index] == other.gameObject)
         {
             index++;
         }
