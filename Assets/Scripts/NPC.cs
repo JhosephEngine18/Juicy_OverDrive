@@ -17,7 +17,6 @@ public class NPC : MonoBehaviour
     private Vector3 direction;
     Quaternion rotation;
     Rigidbody rb;
-    [SerializeField] private Transform WheelFR, WheelFL, WheelBR, WheelBL;
     
     void Start()
     {
