@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 173424442409307975}
   - component: {fileID: 2106896865994909433}
   - component: {fileID: 3435409947458613984}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Checkpoint NPC
   m_TagString: Checkpoints
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37383439202594211}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 97.15439, y: 0, z: 80.553604}
   m_LocalScale: {x: 27.105, y: 14.389, z: 1}
   m_ConstrainProportionsScale: 0
