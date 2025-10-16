@@ -34,24 +34,14 @@ public class NPC : MonoBehaviour
         gameObject.transform.rotation = new Quaternion(0f,Quaternion.RotateTowards(currentRotation, nextRotation, Time.deltaTime * TurningSpeed).y,0f,Quaternion.RotateTowards(currentRotation, nextRotation, Time.deltaTime * TurningSpeed).w);
         rotation = Quaternion.RotateTowards(currentRotation, nextRotation, Time.deltaTime * TurningSpeed);
         
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        rb.AddForce(transform.forward * Movespeed);
-        
-=======
         isStuck();
         WheelsAnimation();
         currentSpeed = rb.linearVelocity.magnitude;
->>>>>>> Stashed changes
-=======
-        isStuck();
-        WheelsAnimation();
-        currentSpeed = rb.linearVelocity.magnitude;
->>>>>>> Stashed changes
     }
 
     private void FixedUpdate()
     {
+        rb.AddForce(transform.forward * Movespeed);
     }
 
     private void OnTriggerEnter(Collider other)
