@@ -30,12 +30,12 @@ public class NPC : MonoBehaviour
         gameObject.transform.rotation = new Quaternion(0f,Quaternion.RotateTowards(currentRotation, nextRotation, Time.deltaTime * TurningSpeed).y,0f,Quaternion.RotateTowards(currentRotation, nextRotation, Time.deltaTime * TurningSpeed).w);
         rotation = Quaternion.RotateTowards(currentRotation, nextRotation, Time.deltaTime * TurningSpeed);
         
-        rb.AddForce(transform.forward * Movespeed);
         
     }
 
     private void FixedUpdate()
     {
+        rb.AddForce(transform.forward * Movespeed);
     }
 
     private void OnTriggerEnter(Collider other)
