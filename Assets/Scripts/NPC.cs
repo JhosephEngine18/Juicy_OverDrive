@@ -66,7 +66,7 @@ public class NPC : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                rb.AddForce(transform.up * 10f, ForceMode.Impulse);
+                rb.AddForce(transform.up * 2f, ForceMode.Impulse);
             }
         }
         else
