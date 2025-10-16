@@ -17,6 +17,10 @@ public class NPC : MonoBehaviour
     private Vector3 direction;
     Quaternion rotation;
     Rigidbody rb;
+    float timer = 1;
+    public Transform[] Wheels = new Transform[4];
+    private float currentSpeed;
+
     
     void Start()
     {
@@ -30,8 +34,14 @@ public class NPC : MonoBehaviour
         gameObject.transform.rotation = new Quaternion(0f,Quaternion.RotateTowards(currentRotation, nextRotation, Time.deltaTime * TurningSpeed).y,0f,Quaternion.RotateTowards(currentRotation, nextRotation, Time.deltaTime * TurningSpeed).w);
         rotation = Quaternion.RotateTowards(currentRotation, nextRotation, Time.deltaTime * TurningSpeed);
         
+<<<<<<< Updated upstream
         rb.AddForce(transform.forward * Movespeed);
         
+=======
+        isStuck();
+        WheelsAnimation();
+        currentSpeed = rb.linearVelocity.magnitude;
+>>>>>>> Stashed changes
     }
 
     private void FixedUpdate()
@@ -51,5 +61,29 @@ public class NPC : MonoBehaviour
             }
         }
     }
-    
+
+
+    void isStuck()
+    {
+        if (rb.linearVelocity.magnitude <= 0.5)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                rb.AddForce(transform.up * 10f, ForceMode.Impulse);
+            }
+        }
+        else
+        {
+            timer = 1;
+        }
+    }
+
+    void WheelsAnimation()
+    {
+        Wheels[0].Rotate(1f * currentSpeed, 0f, 0f);
+        Wheels[1].Rotate(1f * currentSpeed,0f, 0f);
+        Wheels[2].Rotate(1f * currentSpeed, 0f, 0f);
+        Wheels[3].Rotate(1f *currentSpeed, 0f, 0f);
+    }
 }
