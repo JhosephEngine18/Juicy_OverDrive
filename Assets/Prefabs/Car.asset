@@ -15,10 +15,10 @@ MonoBehaviour:
   springForce: 75
   restDistance: 0.5
   springDamper: 5
-  turnSpeed: 12
+  turnSpeed: 5
   minSpeed: 2
-  maxSpeed: 1
+  maxSpeed: 5
   T: 0
   frontTireGrip: 1
   backTireGrip: 1
-  tireMass: 10
+  tireMass: 5
