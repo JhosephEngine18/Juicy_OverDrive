@@ -8,6 +8,7 @@ public class Player_Input : MonoBehaviour
 {
     //Referencia al ScriptableObject que contiene las stas de nuestro carro.
     [SerializeField] private Car carStats;
+    frontWheelTurning wheelTurning;
 
     private float T;
     private float Acceleration;
@@ -16,23 +17,28 @@ public class Player_Input : MonoBehaviour
     private float currentSpeed;
     private float baseFrontTireGrip = 1f;
     private float baseBackTireGrip = 0.5f;
-    
+    private float baseTireMass = 5f;
+    [SerializeField] private float turnSpeed = 10f;
+    private Quaternion currentRotation;
+
     //Referencia a la clase de C# de nuestros Inputs
     Car_Inputs car;
+
     //Declaramos las inputActions que vamos a usar en el código
     private InputAction playerDirection;
     private InputAction driftInput;
-    
+
     //Vector3 que almacena el playerInput de la direccion a la que 
     //quiere acelarar el usuario (atrás o adelante)
     Vector3 accelerationDirection = Vector3.zero;
+
     //La direccion hacia la que quiero aplicar fuerza para acelerar
     //osea wheelTransform.forward
     private Vector3 moveDirection;
-    
+
     private Transform wheelTransform;
     private Rigidbody carRigidbody;
-    
+
     private void Start()
     {
         
@@ -41,12 +47,14 @@ public class Player_Input : MonoBehaviour
         driftInput = car.FindAction("Drift");
         playerDirection = car.FindAction("Forward/Backward");
     }
+
     private void Awake()
     {
         baseFrontTireGrip = carStats.frontTireGrip;
         car = new Car_Inputs();
+        wheelTurning = GetComponent<frontWheelTurning>();
     }
-    
+
     private void OnEnable()
     {
         car.Enable();
@@ -64,7 +72,7 @@ public class Player_Input : MonoBehaviour
         manageDriftInput();
 
     }
-    
+
     void getAccelerationDirection()
     {
         //Obtenemos la direccion de aceleracion del jugador (adelante/atrás)
@@ -81,14 +89,15 @@ public class Player_Input : MonoBehaviour
             T += 1f * Time.deltaTime;
             carRigidbody.AddForceAtPosition(moveDirection * Acceleration, wheelTransform.position);
             checkVelocity();
-        }else if (accelerationDirection.z == -1)
+        }
+        else if (accelerationDirection.z == -1)
         {
             Acceleration = Mathf.Lerp(carStats.minSpeed, carStats.maxSpeed, T);
-            T += 1f * Time.deltaTime* Acceleration;
+            T += 1f * Time.deltaTime * Acceleration;
             carRigidbody.AddForceAtPosition(-moveDirection * Acceleration, wheelTransform.position);
             checkVelocity();
         }
-        
+
     }
 
     //Función que se asegura de que el carro tenga un limite de velocidad, aplicando fueza
@@ -105,7 +114,8 @@ public class Player_Input : MonoBehaviour
                 carRigidbody.AddForceAtPosition(-moveDirection * offset, wheelTransform.position);
                 Debug.Log("car speed: " + carRigidbody.linearVelocity.magnitude);
             }
-        }else if (accelerationDirection.z == -1)
+        }
+        else if (accelerationDirection.z == -1)
         {
             if (currentSpeed > Mathf.Abs(speedLimit))
             {
@@ -126,16 +136,23 @@ public class Player_Input : MonoBehaviour
         {
             carStats.frontTireGrip = baseFrontTireGrip;
             carStats.backTireGrip = baseBackTireGrip;
+            carStats.tireMass = baseTireMass;
         }
     }
 
     void Drift()
     {
-        
-       carStats.frontTireGrip = 0; 
-       carStats.backTireGrip = 0; 
-       
-    }
+        currentRotation = carRigidbody.rotation;
+        carStats.frontTireGrip = 0f;
+        carStats.backTireGrip = 0;
+        carStats.tireMass = 10f;
 
-    
+        if (wheelTurning.getSteeringInput() != 0)
+        {
+            float steeringDirection = wheelTurning.getSteeringInput();
+            carRigidbody.rotation = currentRotation*Quaternion.Euler(0f,steeringDirection+turnSpeed*Time.fixedDeltaTime , 0f);
+        }
+        
+
+    }
 }

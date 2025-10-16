@@ -70,4 +70,10 @@ public class frontWheelTurning : MonoBehaviour
         //Movemos la rotacion del transform de las ruedas hacia steeringInput en X multiplicado por TurnSpeed.
         wheelTransform.localRotation = Quaternion.Euler(0, steeringInput.x * carStats.turnSpeed, 0);
     }
+
+    public float getSteeringInput()
+    {
+        return steeringInput.x;
+
+    }
 }

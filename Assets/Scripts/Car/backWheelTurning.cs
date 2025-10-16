@@ -11,7 +11,8 @@ public class backWheelTurning : MonoBehaviour
     
     [SerializeField] private Car carStats;
     private Rigidbody carRigidbody;
-
+    
+    
     Car_Inputs car;
     InputAction playerDirection;
 
@@ -21,8 +22,6 @@ public class backWheelTurning : MonoBehaviour
     private Vector3 steeringDirection;
     private Vector3 tireWorldVelocity;
     
-    private float currentRotation = 0f;
-    private float minRotation = 0f;
     private void Start()
     {
         wheelTransform = gameObject.GetComponent<Transform>();
