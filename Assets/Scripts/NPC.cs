@@ -35,8 +35,14 @@ public class NPC : MonoBehaviour
         rotation = Quaternion.RotateTowards(currentRotation, nextRotation, Time.deltaTime * TurningSpeed);
         
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         rb.AddForce(transform.forward * Movespeed);
         
+=======
+        isStuck();
+        WheelsAnimation();
+        currentSpeed = rb.linearVelocity.magnitude;
+>>>>>>> Stashed changes
 =======
         isStuck();
         WheelsAnimation();
