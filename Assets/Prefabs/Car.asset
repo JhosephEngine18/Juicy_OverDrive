@@ -20,5 +20,5 @@ MonoBehaviour:
   maxSpeed: 5
   T: 0
   frontTireGrip: 1
-  backTireGrip: 1
+  backTireGrip: 0.5
   tireMass: 5

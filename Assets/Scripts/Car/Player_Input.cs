@@ -14,7 +14,8 @@ public class Player_Input : MonoBehaviour
     private float Decceleration;
     private float speedLimit = 30f;
     private float currentSpeed;
-    private float baseFrontTireGrip;
+    private float baseFrontTireGrip = 1f;
+    private float baseBackTireGrip = 0.5f;
     
     //Referencia a la clase de C# de nuestros Inputs
     Car_Inputs car;
@@ -37,14 +38,13 @@ public class Player_Input : MonoBehaviour
         
         wheelTransform = gameObject.GetComponent<Transform>();
         carRigidbody = gameObject.GetComponentInParent<Rigidbody>();
-         
+        driftInput = car.FindAction("Drift");
+        playerDirection = car.FindAction("Forward/Backward");
     }
     private void Awake()
     {
         baseFrontTireGrip = carStats.frontTireGrip;
         car = new Car_Inputs();
-        playerDirection = car.FindAction("Forward/Backward");
-        driftInput = car.FindAction("Drift");
     }
     
     private void OnEnable()
@@ -61,7 +61,7 @@ public class Player_Input : MonoBehaviour
     {
         moveDirection = wheelTransform.forward;
         Accelerate(moveDirection);
-        
+        manageDriftInput();
 
     }
     
@@ -119,11 +119,13 @@ public class Player_Input : MonoBehaviour
     {
         if (driftInput.IsPressed())
         {
+            Debug.Log("si funciona");
             Drift();
         }
         else
         {
-            
+            carStats.frontTireGrip = baseFrontTireGrip;
+            carStats.backTireGrip = baseBackTireGrip;
         }
     }
 
