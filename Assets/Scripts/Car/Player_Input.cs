@@ -20,9 +20,9 @@ public class Player_Input : MonoBehaviour
     private float baseFrontTireGrip = 1f;
     private float baseBackTireGrip = 1;
     private float baseTireMass = 5f;
-    private float driftFrontTireGrip = 0f;
-    private float driftBackTireGrip = 0f;
-    private float driftTireMass = 10f;
+    private float driftFrontTireGrip = 0.1f;
+    private float driftBackTireGrip = 0.1f;
+    private float driftTireMass = 4f;
     [SerializeField] private float turnSpeed = 10f;
     private Quaternion currentRotation;
 
@@ -74,7 +74,7 @@ public class Player_Input : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moveDirection = wheelTransform.forward;
+        
         Accelerate(moveDirection);
         manageDriftInput();
 
@@ -88,10 +88,13 @@ public class Player_Input : MonoBehaviour
 
     void Accelerate(Vector3 direction)
     {
+        Debug.Log("Speed: "+carRigidbody.linearVelocity.magnitude);
+        moveDirection = wheelTransform.forward;
         getAccelerationDirection();
         //Si la dirección en Z es == 1 nos movemos para delante, si es == -1 nos movemos para atrás
         if (accelerationDirection.z == 1)
         {
+            
             Acceleration = Mathf.Lerp(carStats.minSpeed, carStats.maxSpeed, T);
             T += 1f * Time.deltaTime;
             carRigidbody.AddForceAtPosition(moveDirection * Acceleration, wheelTransform.position);
@@ -134,23 +137,27 @@ public class Player_Input : MonoBehaviour
     //Drift que no funciona (todavía?????, veremos si se logra)
     void manageDriftInput()
     {
+        float steeringDirection = wheelTurning.getSteeringInput();
         if (driftInput.IsPressed() & carRigidbody.linearVelocity.magnitude > 1)
         {
-            Debug.Log(carRigidbody.linearVelocity.magnitude);
-            Drift();
-            
+            if (wheelTurning.getSteeringInput() != 0)
+            {
+            Drift(steeringDirection);
+            }
         }
         else if(!driftInput.IsPressed() & carStats.frontTireGrip != baseFrontTireGrip)
         {
+            float currentFrontTireGrip = carStats.frontTireGrip;
+            float currentBackTireGrip = carStats.backTireGrip;
             //Lerpeamos los valores de vuelta a su valor original (lerpeamos para que se sienta mas suave la transición)
             //Ya que antes se sentía muy abrupto el cambio del estado de drift al estado "normal"
-            carStats.frontTireGrip = Mathf.Lerp(driftFrontTireGrip, baseFrontTireGrip, 5f*Time.fixedDeltaTime); 
-            carStats.backTireGrip = Mathf.Lerp(driftBackTireGrip, baseBackTireGrip, 5f*Time.fixedDeltaTime);
-            carStats.tireMass = Mathf.Lerp(driftTireMass, baseTireMass, -5f*Time.fixedDeltaTime);
+            carStats.frontTireGrip = Mathf.Lerp(currentFrontTireGrip, baseFrontTireGrip, 0.5f*Time.fixedDeltaTime); 
+            carStats.backTireGrip = Mathf.Lerp(currentBackTireGrip, baseBackTireGrip, 0.5f*Time.fixedDeltaTime);
+            carStats.tireMass = baseTireMass;
         }
     }
 
-    void Drift()
+    void Drift(float steeringDirection)
     {
         //obtengo rotacion actual
         currentRotation = carRigidbody.rotation;
@@ -160,12 +167,9 @@ public class Player_Input : MonoBehaviour
         carStats.tireMass = driftTireMass;
 
         //llamo el Metodo getSteeringInput de mi archivo frontWheelTurning
-        if (wheelTurning.getSteeringInput() != 0)
-        {
-            float steeringDirection = wheelTurning.getSteeringInput();
-            carRigidbody.rotation = currentRotation*Quaternion.Euler(0f,steeringDirection+turnSpeed*Time.fixedDeltaTime , 0f);
-        }
+       
         
+        carRigidbody.rotation = currentRotation*Quaternion.Euler(0f,steeringDirection+turnSpeed*Time.fixedDeltaTime , 0f);
 
     }
 }
