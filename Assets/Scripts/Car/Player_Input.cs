@@ -8,6 +8,8 @@ public class Player_Input : MonoBehaviour
 {
     //Referencia al ScriptableObject que contiene las stas de nuestro carro.
     [SerializeField] private Car carStats;
+    //Referencia a nuestro script "Frontwheelturning"
+    //Lo necesitamos para llamar el método getSteeringInput
     frontWheelTurning wheelTurning;
 
     private float T;
@@ -16,8 +18,11 @@ public class Player_Input : MonoBehaviour
     private float speedLimit = 30f;
     private float currentSpeed;
     private float baseFrontTireGrip = 1f;
-    private float baseBackTireGrip = 0.5f;
+    private float baseBackTireGrip = 1;
     private float baseTireMass = 5f;
+    private float driftFrontTireGrip = 0f;
+    private float driftBackTireGrip = 0f;
+    private float driftTireMass = 10f;
     [SerializeField] private float turnSpeed = 10f;
     private Quaternion currentRotation;
 
@@ -50,7 +55,9 @@ public class Player_Input : MonoBehaviour
 
     private void Awake()
     {
-        baseFrontTireGrip = carStats.frontTireGrip;
+        carStats.frontTireGrip = baseFrontTireGrip;
+        carStats.backTireGrip = baseBackTireGrip;
+        carStats.tireMass = baseTireMass;
         car = new Car_Inputs();
         wheelTurning = GetComponent<frontWheelTurning>();
     }
@@ -127,26 +134,32 @@ public class Player_Input : MonoBehaviour
     //Drift que no funciona (todavía?????, veremos si se logra)
     void manageDriftInput()
     {
-        if (driftInput.IsPressed())
+        if (driftInput.IsPressed() & carRigidbody.linearVelocity.magnitude > 1)
         {
-            Debug.Log("si funciona");
+            Debug.Log(carRigidbody.linearVelocity.magnitude);
             Drift();
+            
         }
-        else
+        else if(!driftInput.IsPressed() & carStats.frontTireGrip != baseFrontTireGrip)
         {
-            carStats.frontTireGrip = baseFrontTireGrip;
-            carStats.backTireGrip = baseBackTireGrip;
-            carStats.tireMass = baseTireMass;
+            //Lerpeamos los valores de vuelta a su valor original (lerpeamos para que se sienta mas suave la transición)
+            //Ya que antes se sentía muy abrupto el cambio del estado de drift al estado "normal"
+            carStats.frontTireGrip = Mathf.Lerp(driftFrontTireGrip, baseFrontTireGrip, 5f*Time.fixedDeltaTime); 
+            carStats.backTireGrip = Mathf.Lerp(driftBackTireGrip, baseBackTireGrip, 5f*Time.fixedDeltaTime);
+            carStats.tireMass = Mathf.Lerp(driftTireMass, baseTireMass, -5f*Time.fixedDeltaTime);
         }
     }
 
     void Drift()
     {
+        //obtengo rotacion actual
         currentRotation = carRigidbody.rotation;
-        carStats.frontTireGrip = 0f;
-        carStats.backTireGrip = 0;
-        carStats.tireMass = 10f;
+        //cambio el valor de las siguientes variables del scriptable object Car
+        carStats.frontTireGrip = driftFrontTireGrip;
+        carStats.backTireGrip = driftBackTireGrip;
+        carStats.tireMass = driftTireMass;
 
+        //llamo el Metodo getSteeringInput de mi archivo frontWheelTurning
         if (wheelTurning.getSteeringInput() != 0)
         {
             float steeringDirection = wheelTurning.getSteeringInput();
