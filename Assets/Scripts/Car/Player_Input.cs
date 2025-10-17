@@ -134,11 +134,12 @@ public class Player_Input : MonoBehaviour
         }
     }
 
-    //Drift que no funciona (todavía?????, veremos si se logra)
+    
     void manageDriftInput()
     {
+        var currentSpeed = carRigidbody.linearVelocity.magnitude;
         float steeringDirection = wheelTurning.getSteeringInput();
-        if (driftInput.IsPressed() & carRigidbody.linearVelocity.magnitude > 1)
+        if (driftInput.IsPressed() & currentSpeed  > 1)
         {
             if (wheelTurning.getSteeringInput() != 0)
             {
@@ -170,6 +171,10 @@ public class Player_Input : MonoBehaviour
        
         
         carRigidbody.rotation = currentRotation*Quaternion.Euler(0f,steeringDirection+turnSpeed*Time.fixedDeltaTime , 0f);
+    }
 
+     float getSteeringDirection(bool hasRun)
+    {
+        float steeringDirection = 
     }
 }
