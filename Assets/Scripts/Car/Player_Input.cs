@@ -174,7 +174,9 @@ public class Player_Input : MonoBehaviour
     }
 
      float getSteeringDirection(bool hasRun)
-    {
-        float steeringDirection = 
-    }
+     {
+         float steeringDirectio;
+         return 0;
+     }
+     
 }
