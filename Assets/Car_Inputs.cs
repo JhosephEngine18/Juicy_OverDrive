@@ -283,6 +283,17 @@ public partial class @Car_Inputs: IInputActionCollection2, IDisposable
                     ""action"": ""Drift"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""10ec551c-6c91-4f21-aa66-dfcfe167134b"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drift"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }

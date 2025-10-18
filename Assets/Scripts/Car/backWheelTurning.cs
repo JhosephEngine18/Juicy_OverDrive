@@ -4,9 +4,15 @@ using UnityEngine.UIElements;
 
 public class backWheelTurning : MonoBehaviour
 {
+    //IMPORTANTE, ESTE CODIGO ES CASI IGUAL A "frontWheelTurning"
+    //LO ÚNICO QUE CAMBIA LA VARIABLE TIREGRIP YA QUE LAS LLANTAS
+    //DE ATRÁS Y LAS DE ADELANTE PUEDEN TENER VALORES DISTINTOS
+    //PARA MAS OPCIONES DE MOVIMIENTO, OTRA COSA QUE CAMBIA ES QUE LAS RUEDAS DE ATRÁS NO GIRAN.
+    
     [SerializeField] private Car carStats;
     private Rigidbody carRigidbody;
-
+    
+    
     Car_Inputs car;
     InputAction playerDirection;
 
@@ -16,8 +22,6 @@ public class backWheelTurning : MonoBehaviour
     private Vector3 steeringDirection;
     private Vector3 tireWorldVelocity;
     
-    private float currentRotation = 0f;
-    private float minRotation = 0f;
     private void Start()
     {
         wheelTransform = gameObject.GetComponent<Transform>();
@@ -46,17 +50,14 @@ public class backWheelTurning : MonoBehaviour
 
     void wheelControl()
     {
-        currentRotation = Mathf.Lerp(minRotation, carStats.turnSpeed, Time.deltaTime * 25);
         
         steeringDirection = wheelTransform.right;
         tireWorldVelocity = carRigidbody.GetPointVelocity(wheelTransform.position);
         float steeringVelocity = Vector3.Dot(steeringDirection, tireWorldVelocity);
-        float turningRate = -steeringVelocity * carStats.frontTireGrip;
+        float turningRate = -steeringVelocity * carStats.backTireGrip;
         float AccelerationRate = turningRate / Time.fixedDeltaTime;
         
         carRigidbody.AddForceAtPosition(steeringDirection * carStats.tireMass * turningRate, wheelTransform.position);
-        
-        steeringInput = playerDirection.ReadValue<Vector2>();
        
     }
 }
