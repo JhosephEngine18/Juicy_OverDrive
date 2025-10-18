@@ -20,10 +20,13 @@ public class NPC : MonoBehaviour
     float timer = 1;
     public Transform[] Wheels = new Transform[4];
     private float currentSpeed;
+    Vector3 initialRotation;
+    float currentwheelrotation;
 
     
     void Start()
     {
+        initialRotation = new Vector3(1f, 1f,1f);
         rb = GetComponent<Rigidbody>();
     }
 
@@ -81,5 +84,6 @@ public class NPC : MonoBehaviour
         Wheels[1].Rotate(1f * currentSpeed,0f, 0f);
         Wheels[2].Rotate(1f * currentSpeed, 0f, 0f);
         Wheels[3].Rotate(1f *currentSpeed, 0f, 0f);
+        currentwheelrotation = Wheels[2].rotation.y;
     }
 }
