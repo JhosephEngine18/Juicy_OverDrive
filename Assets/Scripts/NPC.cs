@@ -78,6 +78,7 @@ public class NPC : MonoBehaviour
         }
     }
 
+    //Updates Wheels for animate them
     void WheelsAnimation()
     {
         Wheels[0].Rotate(1f * currentSpeed, 0f, 0f);
