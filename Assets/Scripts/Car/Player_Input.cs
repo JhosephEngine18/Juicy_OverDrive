@@ -1,6 +1,7 @@
 using System;
 using Unity.Mathematics;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,8 +23,9 @@ public class Player_Input : MonoBehaviour
     private float baseTireMass = 5f;
     private float driftFrontTireGrip = 0.1f;
     private float driftBackTireGrip = 0.1f;
-    private float driftTireMass = 4f;
-    [SerializeField] private float turnSpeed = 10f;
+    private float driftTireMass = 0f;
+    [SerializeField] private bool hasRun = false;
+    [SerializeField] private float turnSpeed = 65f;
     private Quaternion currentRotation;
 
     //Referencia a la clase de C# de nuestros Inputs
@@ -138,12 +140,14 @@ public class Player_Input : MonoBehaviour
     void manageDriftInput()
     {
         var currentSpeed = carRigidbody.linearVelocity.magnitude;
-        float steeringDirection = wheelTurning.getSteeringInput();
+        float steeringDirection = getSteeringDirection(hasRun);
+        hasRun = true;
         if (driftInput.IsPressed() & currentSpeed  > 1)
         {
             if (wheelTurning.getSteeringInput() != 0)
             {
-            Drift(steeringDirection);
+                Drift(steeringDirection);
+                
             }
         }
         else if(!driftInput.IsPressed() & carStats.frontTireGrip != baseFrontTireGrip)
@@ -155,6 +159,7 @@ public class Player_Input : MonoBehaviour
             carStats.frontTireGrip = Mathf.Lerp(currentFrontTireGrip, baseFrontTireGrip, 0.5f*Time.fixedDeltaTime); 
             carStats.backTireGrip = Mathf.Lerp(currentBackTireGrip, baseBackTireGrip, 0.5f*Time.fixedDeltaTime);
             carStats.tireMass = baseTireMass;
+            hasRun = false;
         }
     }
 
@@ -170,11 +175,19 @@ public class Player_Input : MonoBehaviour
         //llamo el Metodo getSteeringInput de mi archivo frontWheelTurning
        
         
-        carRigidbody.rotation = currentRotation*Quaternion.Euler(0f,steeringDirection+turnSpeed*Time.fixedDeltaTime , 0f);
+        carRigidbody.rotation = currentRotation*Quaternion.Euler(0f,steeringDirection*turnSpeed*Time.fixedDeltaTime , 0f);
     }
 
      float getSteeringDirection(bool hasRun)
     {
-        float steeringDirection = 
+        if (hasRun == false)
+        {
+            return wheelTurning.getSteeringInput();
+        }
+        else
+        {
+            Debug.Log("Esté metodo ya ha sido usado");
+            return 0;
+        }
     }
 }
