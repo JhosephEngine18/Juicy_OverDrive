@@ -90,7 +90,7 @@ public class Player_Input : MonoBehaviour
 
     void Accelerate(Vector3 direction)
     {
-        Debug.Log("Speed: "+carRigidbody.linearVelocity.magnitude);
+        //Debug.Log("Speed: "+carRigidbody.linearVelocity.magnitude);
         moveDirection = wheelTransform.forward;
         getAccelerationDirection();
         //Si la dirección en Z es == 1 nos movemos para delante, si es == -1 nos movemos para atrás
@@ -124,7 +124,7 @@ public class Player_Input : MonoBehaviour
             if (currentSpeed > speedLimit)
             {
                 carRigidbody.AddForceAtPosition(-moveDirection * offset, wheelTransform.position);
-                Debug.Log("car speed: " + carRigidbody.linearVelocity.magnitude);
+                //Debug.Log("car speed: " + carRigidbody.linearVelocity.magnitude);
             }
         }
         else if (accelerationDirection.z == -1)
@@ -186,7 +186,7 @@ public class Player_Input : MonoBehaviour
         }
         else
         {
-            Debug.Log("Esté metodo ya ha sido usado");
+            //Debug.Log("Esté metodo ya ha sido usado");
             return 0;
         }
     }

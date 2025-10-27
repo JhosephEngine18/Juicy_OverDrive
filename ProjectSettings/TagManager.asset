@@ -8,7 +8,7 @@ TagManager:
   - npc
   - Goal
   - Checkpoints
-  - Manzana
+  - Fruta
   layers:
   - Default
   - TransparentFX
