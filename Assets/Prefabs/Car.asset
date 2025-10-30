@@ -17,8 +17,8 @@ MonoBehaviour:
   springDamper: 5
   turnSpeed: 5
   minSpeed: 2
-  maxSpeed: 5
+  maxSpeed: 3670
   T: 0
   frontTireGrip: 1
-  backTireGrip: 0.5
+  backTireGrip: 1
   tireMass: 5

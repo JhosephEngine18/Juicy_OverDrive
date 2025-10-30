@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class itemInventory : MonoBehaviour
 {
+    Car carStats;
+    Player_Input playerInput;
+
     public enum fruitType
     {
         Chile,
@@ -47,7 +50,9 @@ public class itemInventory : MonoBehaviour
 
     void Chile() 
     {
-    
+        
+        carStats.maxSpeed = 7;
+        
     }
 
     void MixFruits(fruitType fruitType) 

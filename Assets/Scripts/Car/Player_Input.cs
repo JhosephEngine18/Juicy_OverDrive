@@ -1,7 +1,3 @@
-using System;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,12 +20,13 @@ public class Player_Input : MonoBehaviour
     private float driftFrontTireGrip = 0.1f;
     private float driftBackTireGrip = 0.1f;
     private float driftTireMass = 0f;
+    [SerializeField] private bool isChileActive = false;
     [SerializeField] private bool hasRun = false;
     [SerializeField] private float turnSpeed = 65f;
     private Quaternion currentRotation;
 
     //Referencia a la clase de C# de nuestros Inputs
-    Car_Inputs car;
+    Car_Inputs carInputs;
 
     //Declaramos las inputActions que vamos a usar en el código
     private InputAction playerDirection;
@@ -41,57 +38,60 @@ public class Player_Input : MonoBehaviour
 
     //La direccion hacia la que quiero aplicar fuerza para acelerar
     //osea wheelTransform.forward
-    private Vector3 moveDirection;
+    public Vector3 rightMoveDirection;
+    public Vector3 leftMoveDirection;
 
-    private Transform wheelTransform;
+    [SerializeField] private Transform rightWheelTransform;
+    [SerializeField] private Transform leftWheelTransform;
     private Rigidbody carRigidbody;
-
-    private void Start()
-    {
-        
-        wheelTransform = gameObject.GetComponent<Transform>();
-        carRigidbody = gameObject.GetComponentInParent<Rigidbody>();
-        driftInput = car.FindAction("Drift");
-        playerDirection = car.FindAction("Forward/Backward");
-    }
 
     private void Awake()
     {
         carStats.frontTireGrip = baseFrontTireGrip;
         carStats.backTireGrip = baseBackTireGrip;
         carStats.tireMass = baseTireMass;
-        car = new Car_Inputs();
+        carInputs = new Car_Inputs();
         wheelTurning = GetComponent<frontWheelTurning>();
+    }
+
+    private void Start()
+    {
+        carRigidbody = gameObject.GetComponent<Rigidbody>();
+        driftInput = carInputs.FindAction("Drift");
+        playerDirection = carInputs.FindAction("Forward/Backward");
     }
 
     private void OnEnable()
     {
-        car.Enable();
+        carInputs.Enable();
     }
 
     private void OnDisable()
     {
-        car.Disable();
+        carInputs.Disable();
     }
 
     private void FixedUpdate()
     {
         
-        Accelerate(moveDirection);
+        Accelerate(rightMoveDirection,leftMoveDirection);
         manageDriftInput();
-
+        Chile();
+        
     }
 
     void getAccelerationDirection()
     {
         //Obtenemos la direccion de aceleracion del jugador (adelante/atrás)
         accelerationDirection = playerDirection.ReadValue<Vector3>();
+        Debug.Log(accelerationDirection);
     }
 
-    void Accelerate(Vector3 direction)
+    void Accelerate(Vector3 rightDirection, Vector3 leftMoveDirection)
     {
         //Debug.Log("Speed: "+carRigidbody.linearVelocity.magnitude);
-        moveDirection = wheelTransform.forward;
+        rightMoveDirection = rightWheelTransform.forward;
+        leftMoveDirection = leftWheelTransform.forward;
         getAccelerationDirection();
         //Si la dirección en Z es == 1 nos movemos para delante, si es == -1 nos movemos para atrás
         if (accelerationDirection.z == 1)
@@ -99,14 +99,16 @@ public class Player_Input : MonoBehaviour
             
             Acceleration = Mathf.Lerp(carStats.minSpeed, carStats.maxSpeed, T);
             T += 1f * Time.deltaTime;
-            carRigidbody.AddForceAtPosition(moveDirection * Acceleration, wheelTransform.position);
+            carRigidbody.AddForceAtPosition(accelerationDirection * Acceleration, rightWheelTransform.position);
+            carRigidbody.AddForceAtPosition(accelerationDirection * Acceleration, leftWheelTransform.position);
             checkVelocity();
         }
         else if (accelerationDirection.z == -1)
         {
             Acceleration = Mathf.Lerp(carStats.minSpeed, carStats.maxSpeed, T);
             T += 1f * Time.deltaTime * Acceleration;
-            carRigidbody.AddForceAtPosition(-moveDirection * Acceleration, wheelTransform.position);
+            carRigidbody.AddForceAtPosition(accelerationDirection * Acceleration, rightWheelTransform.position);
+            carRigidbody.AddForceAtPosition(accelerationDirection * Acceleration, leftWheelTransform.position);
             checkVelocity();
         }
 
@@ -123,15 +125,16 @@ public class Player_Input : MonoBehaviour
         {
             if (currentSpeed > speedLimit)
             {
-                carRigidbody.AddForceAtPosition(-moveDirection * offset, wheelTransform.position);
-                //Debug.Log("car speed: " + carRigidbody.linearVelocity.magnitude);
+                carRigidbody.AddForceAtPosition(-rightMoveDirection * offset, rightWheelTransform.position);
+                carRigidbody.AddForceAtPosition(-leftMoveDirection * offset, leftWheelTransform.position);
             }
         }
         else if (accelerationDirection.z == -1)
         {
             if (currentSpeed > Mathf.Abs(speedLimit))
             {
-                carRigidbody.AddForceAtPosition(moveDirection * offset, wheelTransform.position);
+                carRigidbody.AddForceAtPosition(-rightMoveDirection * offset, rightWheelTransform.position);
+                carRigidbody.AddForceAtPosition(-leftMoveDirection * offset, leftWheelTransform.position);
             }
         }
     }
@@ -188,6 +191,18 @@ public class Player_Input : MonoBehaviour
         {
             //Debug.Log("Esté metodo ya ha sido usado");
             return 0;
+        }
+    }
+
+    
+
+    [SerializeField] void Chile()
+    {
+        if (isChileActive == true)
+        {
+            Acceleration += 10;
+            carStats.maxSpeed += 5;
+            isChileActive = false;
         }
     }
 }
