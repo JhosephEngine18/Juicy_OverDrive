@@ -31,9 +31,14 @@ public class SettingsForQuality : MonoBehaviour
                 print("1920x1080");
                 break;
 
-                case 1:
+            case 1:
                 Screen.SetResolution(1280,720,fullscreen);
                 print("1280x720");
+                break;
+
+            case 2:
+                Screen.SetResolution(640, 480, fullscreen);
+                print("640x480");
                 break;
         }
     }
