@@ -8,6 +8,12 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] EventSystem eventSystem;
     [SerializeField] private Selectable firstitemtoselect;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     private void Start()
     {
         if (eventSystem == null) 
@@ -16,9 +22,9 @@ public class GameManager : MonoBehaviour
         eventSystem.firstSelectedGameObject = firstitemtoselect.gameObject;
     }
 
-    public void ChangeScene()
+    public void ChangeScene(int scene)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(scene);
     }
 
     public void QuitGame()

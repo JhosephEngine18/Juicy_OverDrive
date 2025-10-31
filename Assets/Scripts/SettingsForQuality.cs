@@ -11,8 +11,6 @@ public class SettingsForQuality : MonoBehaviour
     public TMP_Dropdown Resolutions;
     bool isFullScreen = true;
     public Toggle ScreenMode;
-    [SerializeField] Scene currentScene;
-
     //Changes the ScreenMode if is FullScreen or not
 
     private void Awake()
@@ -67,5 +65,5 @@ public class SettingsForQuality : MonoBehaviour
         PlayerPrefs.SetInt("Resolutions", sel);
         PlayerPrefs.Save();
     }
-
+    
 }

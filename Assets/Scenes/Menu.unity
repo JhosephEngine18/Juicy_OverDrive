@@ -526,7 +526,7 @@ PrefabInstance:
     - target: {fileID: 463950552652773383, guid: 07e2f5df586d675449002eefa78cd8eb, type: 3}
       propertyPath: OptionsMenu
       value: 
-      objectReference: {fileID: 1555714221}
+      objectReference: {fileID: 5241197532636073271, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
     - target: {fileID: 476616583636767303, guid: 07e2f5df586d675449002eefa78cd8eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -832,12 +832,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8827256588034473301, guid: 06389ddb393a0bd458350fce3256aea6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827256588034473301, guid: 06389ddb393a0bd458350fce3256aea6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1083068117082747553}
     - target: {fileID: 8827256588034473301, guid: 06389ddb393a0bd458350fce3256aea6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827256588034473301, guid: 06389ddb393a0bd458350fce3256aea6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
