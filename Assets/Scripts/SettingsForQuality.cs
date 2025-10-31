@@ -8,9 +8,10 @@ using UnityEngine.UI;
 
 public class SettingsForQuality : MonoBehaviour
 {
-    public TMP_Dropdown Resolutions;
+    public TMP_Dropdown Resolutions, FPS;
     bool isFullScreen = true;
     public Toggle ScreenMode;
+    int fps;
     //Changes the ScreenMode if is FullScreen or not
 
     private void Awake()
@@ -18,7 +19,11 @@ public class SettingsForQuality : MonoBehaviour
         OnValueChanged(PlayerPrefs.GetInt("Resolutions", 0));
         isFullScreen = PlayerPrefs.GetInt("ScreenMode", 1) != 0;
         OnScreenModeChanged(isFullScreen);
+        OnFPSValueChanged(PlayerPrefs.GetInt("FPS", 0));
     }
+
+    
+
     public void OnScreenModeChanged(bool isFullScreened)
     {
 
@@ -63,6 +68,34 @@ public class SettingsForQuality : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("Resolutions", sel);
+        PlayerPrefs.Save();
+    }
+    
+    public void OnFPSValueChanged(int sel)
+    {
+        switch (sel)
+        {
+            case 0:
+                fps = 60;
+                break;
+            case 1:
+                fps = 120;
+                break;
+            case 2:
+                fps = 144;
+                break;
+            case 3:
+                fps = 165;
+                break;
+            case 4:
+                fps = 240;
+                break;
+
+        }
+        FPS.value = sel;
+        Application.targetFrameRate = fps;
+        
+        PlayerPrefs.SetInt("FPS", sel);
         PlayerPrefs.Save();
     }
     

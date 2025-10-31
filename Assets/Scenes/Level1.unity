@@ -7630,6 +7630,14 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 6799473538489343054, guid: 07e2f5df586d675449002eefa78cd8eb, type: 3}
+      propertyPath: FPS
+      value: 
+      objectReference: {fileID: 1882580501}
+    - target: {fileID: 6799473538489343054, guid: 07e2f5df586d675449002eefa78cd8eb, type: 3}
+      propertyPath: FPSSlider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6799473538489343054, guid: 07e2f5df586d675449002eefa78cd8eb, type: 3}
       propertyPath: ScreenMode
       value: 
       objectReference: {fileID: 2094873886}
@@ -9618,38 +9626,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1265272784279229351, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
-      propertyPath: m_Color.a
-      value: 0.14117648
-      objectReference: {fileID: 0}
-    - target: {fileID: 1497140035241604236, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1497140035241604236, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1689316177}
-    - target: {fileID: 1497140035241604236, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnValueChanged
-      objectReference: {fileID: 0}
     - target: {fileID: 2362545735213276765, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 5599185116305598346}
     - target: {fileID: 2859276515453287902, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2859276515453287902, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1689316177}
-    - target: {fileID: 2859276515453287902, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnScreenModeChanged
-      objectReference: {fileID: 0}
+    - target: {fileID: 4031793033236728970, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1689316177}
     - target: {fileID: 5241197532636073271, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
       propertyPath: m_Name
       value: Options
@@ -9743,6 +9735,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
+--- !u!114 &1882580501 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4031793033236728970, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
+  m_PrefabInstance: {fileID: 1882580500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1882580503 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5241197532636073271, guid: 511369f10d0745f4eb5608a6e62a4870, type: 3}
