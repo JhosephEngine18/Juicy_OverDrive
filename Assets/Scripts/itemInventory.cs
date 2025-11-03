@@ -1,8 +1,12 @@
 using System;
 using UnityEngine;
+using static itemInventory;
 
 public class itemInventory : MonoBehaviour
 {
+
+    [SerializeField] private Car carStats;
+
     public enum fruitType
     {
         Chile,
@@ -11,10 +15,11 @@ public class itemInventory : MonoBehaviour
     }
     GameObject fruit;
 
-    private fruitType[] powerList;
+    private fruitType[] powerList = new fruitType[2];
     public GameObject[] fruitInventory = new GameObject[2];
     private Rigidbody carRigidBody;
     private Collider carCollider;
+    [SerializeField] private bool isChileActive = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,13 +30,13 @@ public class itemInventory : MonoBehaviour
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Chile();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -45,25 +50,28 @@ public class itemInventory : MonoBehaviour
         }
     }
 
-    void Chile() 
+    void Chile()
     {
-    
-    }
-
-    void MixFruits(fruitType fruitType) 
-    {
-        switch (fruitType)
-        { 
-            case fruitType.Chile:
-
-                break;
-            case fruitType.Mora:
-
-                break;
-            default:
-
-                break;
+        if (isChileActive == true) 
+        {
+            carStats.maxSpeed = 10;
         }
     }
 
+    void MixFruits(fruitType fruitA, fruitType fruitB)
+    {
+        switch (fruitA, fruitB)
+        {
+            case (fruitType.Chile, fruitType.Mora):
+            case (fruitType.Mora, fruitType.Chile):
+                Debug.Log("Power Up X");
+                break;
+
+
+
+            default:
+                Debug.Log("Si hace match con nada");
+                break;
+        }
+    }
 }

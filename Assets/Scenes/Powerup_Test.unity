@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 648117747}
   - component: {fileID: 648117746}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Chile
   m_TagString: Fruta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,9 +451,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae94275de62dbb4091bf71e86dd12e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carStats: {fileID: 11400000, guid: 24d19ae99259d3344b8a7eb46c3e00e1, type: 2}
   fruitInventory:
   - {fileID: 0}
   - {fileID: 0}
+  isChileActive: 0
 --- !u!1 &1476349246
 GameObject:
   m_ObjectHideFlags: 0
