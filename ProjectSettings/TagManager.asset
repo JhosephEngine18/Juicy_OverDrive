@@ -9,6 +9,7 @@ TagManager:
   - Goal
   - Checkpoints
   - Fruta
+  - Chile
   layers:
   - Default
   - TransparentFX

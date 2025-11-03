@@ -11,11 +11,13 @@ public class itemInventory : MonoBehaviour
     {
         Chile,
         Mora,
+        Cereza
 
     }
-    GameObject fruit;
 
-    private fruitType[] powerList = new fruitType[2];
+    [SerializeField] private int inventorySlot = 0;
+
+    [SerializeField] private fruitType[] powerList;
     public GameObject[] fruitInventory = new GameObject[2];
     private Rigidbody carRigidBody;
     private Collider carCollider;
@@ -28,25 +30,39 @@ public class itemInventory : MonoBehaviour
         carRigidBody = GetComponent<Rigidbody>();
         carCollider = GetComponent<BoxCollider>();
     }
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
     {
         Chile();
+        
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        int inventorySlot = 0;
-        if (collision.collider.CompareTag("Fruta"))
+        if (other.CompareTag("Fruta"))
         {
-            Debug.Log(collision.gameObject);
-            fruitInventory[inventorySlot] = collision.gameObject;
+            Debug.Log(other.gameObject);
+            fruitInventory[inventorySlot] = other.gameObject;
+            other.gameObject.SetActive(false);
+            powerList[inventorySlot] = other.GetComponent<fruitBehaviour>().fruit;
+        }
+        manageFruitInventory();
+    }
+
+    void manageFruitInventory() 
+    {
+        if (fruitInventory[inventorySlot] != null && inventorySlot != 1)
+        {
             inventorySlot++;
+        }
+    }
+
+    void managePowerUps() 
+    {
+        if (fruitInventory[0].CompareTag("Chile") && fruitInventory[1].CompareTag("Chile")) 
+        {
+            Debug.Log("chile");
         }
     }
 
@@ -62,7 +78,10 @@ public class itemInventory : MonoBehaviour
     {
         switch (fruitA, fruitB)
         {
-            case (fruitType.Chile, fruitType.Mora):
+            case (fruitType.Chile, fruitType.Chile):
+                
+
+                break;
             case (fruitType.Mora, fruitType.Chile):
                 Debug.Log("Power Up X");
                 break;
