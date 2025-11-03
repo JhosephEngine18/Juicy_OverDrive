@@ -2,5 +2,7 @@ using UnityEngine;
 
 public class fruitBehaviour : MonoBehaviour
 {
-    itemInventory.fruitType fruit;
+
+    public itemInventory.fruitType fruit;
+
 }

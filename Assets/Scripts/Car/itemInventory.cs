@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static itemInventory;
 
 public class itemInventory : MonoBehaviour
@@ -9,6 +10,7 @@ public class itemInventory : MonoBehaviour
 
     public enum fruitType
     {
+        None,
         Chile,
         Mora,
         Cereza
@@ -17,8 +19,8 @@ public class itemInventory : MonoBehaviour
 
     [SerializeField] private int inventorySlot = 0;
 
-    [SerializeField] private fruitType[] powerList;
-    public GameObject[] fruitInventory = new GameObject[2];
+    [SerializeField] private fruitType[] powerList = new fruitType[2];
+    //public GameObject[] fruitInventory = new GameObject[2];
     private Rigidbody carRigidBody;
     private Collider carCollider;
     [SerializeField] private bool isChileActive = false;
@@ -34,7 +36,7 @@ public class itemInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Chile();
+        
         
     }
 
@@ -43,28 +45,15 @@ public class itemInventory : MonoBehaviour
         if (other.CompareTag("Fruta"))
         {
             Debug.Log(other.gameObject);
-            fruitInventory[inventorySlot] = other.gameObject;
             other.gameObject.SetActive(false);
             powerList[inventorySlot] = other.GetComponent<fruitBehaviour>().fruit;
-        }
-        manageFruitInventory();
-    }
-
-    void manageFruitInventory() 
-    {
-        if (fruitInventory[inventorySlot] != null && inventorySlot != 1)
-        {
-            inventorySlot++;
+            if (inventorySlot != 1)
+            {
+                inventorySlot += 1;
+            }
         }
     }
 
-    void managePowerUps() 
-    {
-        if (fruitInventory[0].CompareTag("Chile") && fruitInventory[1].CompareTag("Chile")) 
-        {
-            Debug.Log("chile");
-        }
-    }
 
     void Chile()
     {
