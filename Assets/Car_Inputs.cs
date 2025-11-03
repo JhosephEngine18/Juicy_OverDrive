@@ -142,6 +142,17 @@ public partial class @Car_Inputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""c06b5a59-1960-4ca1-9e0c-a10b526dd2c2"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""2D Vector"",
                     ""id"": ""c18ef248-3e9f-4acf-9dc4-d0dfb71eaf77"",
                     ""path"": ""2DVector"",
@@ -287,7 +298,7 @@ public partial class @Car_Inputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""10ec551c-6c91-4f21-aa66-dfcfe167134b"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

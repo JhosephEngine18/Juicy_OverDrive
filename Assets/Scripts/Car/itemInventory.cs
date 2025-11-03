@@ -8,6 +8,9 @@ public class itemInventory : MonoBehaviour
 
     [SerializeField] private Car carStats;
 
+    Car_Inputs car;
+    InputAction useItem;
+
     public enum fruitType
     {
         None,
@@ -26,7 +29,6 @@ public class itemInventory : MonoBehaviour
     [SerializeField] private bool isChileActive = false;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         carRigidBody = GetComponent<Rigidbody>();
@@ -36,13 +38,14 @@ public class itemInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        Chile();
         
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Fruta"))
+        if (other.CompareTag("Fruta") && inventorySlot != 1)
         {
             Debug.Log(other.gameObject);
             other.gameObject.SetActive(false);
@@ -61,6 +64,11 @@ public class itemInventory : MonoBehaviour
         {
             carStats.maxSpeed = 10;
         }
+    }
+
+    void powerupInput() 
+    {
+        
     }
 
     void MixFruits(fruitType fruitA, fruitType fruitB)
