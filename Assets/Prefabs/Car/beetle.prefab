@@ -219,12 +219,10 @@ GameObject:
   - component: {fileID: 6317828375369196249}
   - component: {fileID: 8346643197319279851}
   - component: {fileID: 5138513679761153453}
-  - component: {fileID: 2411460143866020048}
-  - component: {fileID: 5406435086231385001}
-  - component: {fileID: 1781709536865273765}
+  - component: {fileID: 1671361530204887207}
   m_Layer: 0
   m_Name: beetle
-  m_TagString: Untagged
+  m_TagString: car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,7 +235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6135325929572239513}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.0205555, y: 0.23683625, z: 8.048371}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -349,7 +347,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6250001, y: 1.3750002, z: 4.0625}
   m_Center: {x: 0, y: 1, z: 0.28124994}
---- !u!114 &2411460143866020048
+--- !u!114 &1671361530204887207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -358,46 +356,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6135325929572239513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb88f036775dd04489f200f25db1afd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ae94275de62dbb4091bf71e86dd12e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckpointsList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Goal: {fileID: 0}
---- !u!114 &5406435086231385001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135325929572239513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0be44e17efd06284d93c2fb7a6246443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1781709536865273765}
-  startLine: {fileID: 0}
---- !u!114 &1781709536865273765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135325929572239513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 298b59cf54d850346a106cb7a9b0ffec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trackCheckpoints: {fileID: 2411460143866020048}
-  currentCheckpoint: 0
-  laps: 0
+  carStats: {fileID: 11400000, guid: 24d19ae99259d3344b8a7eb46c3e00e1, type: 2}
+  inventorySlot: 0
+  powerList: 0000000000000000
+  isChileActive: 0
 --- !u!1 &6369769324028426549
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +424,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carStats: {fileID: 11400000, guid: 24d19ae99259d3344b8a7eb46c3e00e1, type: 2}
+  hasRun: 0
+  turnSpeed: 65
 --- !u!114 &4013574733528131561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,6 +599,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carStats: {fileID: 11400000, guid: 24d19ae99259d3344b8a7eb46c3e00e1, type: 2}
+  hasRun: 0
+  turnSpeed: 65
 --- !u!1 &7931947099966235089
 GameObject:
   m_ObjectHideFlags: 0

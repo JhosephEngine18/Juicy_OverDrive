@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static itemInventory;
@@ -8,6 +9,7 @@ public class itemInventory : MonoBehaviour
 
     [SerializeField] private Car carStats;
 
+    Player_Input playerInput;
     Car_Inputs car;
     InputAction useItem;
 
@@ -20,55 +22,74 @@ public class itemInventory : MonoBehaviour
 
     }
 
-    [SerializeField] private int inventorySlot = 0;
+    [SerializeField] private int inventorySlot;
 
     [SerializeField] private fruitType[] powerList = new fruitType[2];
-    //public GameObject[] fruitInventory = new GameObject[2];
     private Rigidbody carRigidBody;
     private Collider carCollider;
-    [SerializeField] private bool isChileActive = false;
-
 
     private void Awake()
     {
         carRigidBody = GetComponent<Rigidbody>();
         carCollider = GetComponent<BoxCollider>();
+        car = new Car_Inputs();
     }
 
-    // Update is called once per frame
+    private void Start()
+    {
+        useItem = car.FindAction("Throw");
+        carStats.maxSpeed = 5;
+    }
+
+    private void OnEnable()
+    {
+        car.Enable();
+    }
+
+    private void OnDisable()
+    {
+        car.Disable();
+    }
+   
     void Update()
     {
 
-        Chile();
+        powerupManager();
+        
         
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Fruta") && inventorySlot != 1)
+        if (other.CompareTag("Fruta") && inventorySlot < 2)
         {
             Debug.Log(other.gameObject);
             other.gameObject.SetActive(false);
             powerList[inventorySlot] = other.GetComponent<fruitBehaviour>().fruit;
-            if (inventorySlot != 1)
-            {
-                inventorySlot += 1;
-            }
+            inventorySlot += 1;
         }
     }
 
 
-    void Chile()
+    IEnumerator Chile()
     {
-        if (isChileActive == true) 
+        playerInput.speedLimit = 40;
+        carStats.minSpeed = 2;
+        carStats.maxSpeed = 10;
+        yield return new WaitForSeconds(5f);
+        carStats.minSpeed = 1;
+        carStats.maxSpeed = 5;
+        playerInput.speedLimit = 40;
+        yield return null;
+    }
+
+    void powerupManager () 
+    {
+        if (useItem.IsPressed()) 
         {
-            carStats.maxSpeed = 10;
+            Debug.Log("Le picaste");
+            MixFruits(powerList[0], powerList[1]);
         }
-    }
-
-    void powerupInput() 
-    {
-        
     }
 
     void MixFruits(fruitType fruitA, fruitType fruitB)
@@ -76,10 +97,11 @@ public class itemInventory : MonoBehaviour
         switch (fruitA, fruitB)
         {
             case (fruitType.Chile, fruitType.Chile):
-                
+               
+                StartCoroutine(Chile());
 
                 break;
-            case (fruitType.Mora, fruitType.Chile):
+            case (fruitType.Mora, fruitType.Mora):
                 Debug.Log("Power Up X");
                 break;
 

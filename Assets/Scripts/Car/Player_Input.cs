@@ -15,7 +15,7 @@ public class Player_Input : MonoBehaviour
     private float T;
     private float Acceleration;
     private float Decceleration;
-    private float speedLimit = 30f;
+    public float speedLimit = 30f;
     private float currentSpeed;
     private float baseFrontTireGrip = 1f;
     private float baseBackTireGrip = 1;
@@ -89,7 +89,7 @@ public class Player_Input : MonoBehaviour
 
     void Accelerate(Vector3 direction)
     {
-        //Debug.Log("Speed: "+carRigidbody.linearVelocity.magnitude);
+        Debug.Log("Speed: "+carRigidbody.linearVelocity.magnitude);
         moveDirection = wheelTransform.forward;
         getAccelerationDirection();
         //Si la dirección en Z es == 1 nos movemos para delante, si es == -1 nos movemos para atrás
