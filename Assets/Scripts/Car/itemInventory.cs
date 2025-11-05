@@ -8,8 +8,8 @@ public class itemInventory : MonoBehaviour
 {
 
     [SerializeField] private Car carStats;
+    public GameObject moraSplotch;
 
-    Player_Input playerInput;
     Car_Inputs car;
     InputAction useItem;
 
@@ -26,10 +26,12 @@ public class itemInventory : MonoBehaviour
 
     [SerializeField] private fruitType[] powerList = new fruitType[2];
     private Rigidbody carRigidBody;
+    private Transform carTransform;
     private Collider carCollider;
 
     private void Awake()
     {
+        carTransform = GetComponent<Transform>();
         carRigidBody = GetComponent<Rigidbody>();
         carCollider = GetComponent<BoxCollider>();
         car = new Car_Inputs();
@@ -73,13 +75,25 @@ public class itemInventory : MonoBehaviour
 
     IEnumerator Chile()
     {
-        playerInput.speedLimit = 40;
+        carStats.speedLimit = 40;
         carStats.minSpeed = 2;
         carStats.maxSpeed = 10;
         yield return new WaitForSeconds(5f);
         carStats.minSpeed = 1;
         carStats.maxSpeed = 5;
-        playerInput.speedLimit = 40;
+        carStats.speedLimit = 30;
+        powerList[0] = 0;
+        powerList[1] = 0;
+        yield return null;
+    }
+
+    IEnumerator Mora(GameObject moraSplotch) 
+    {
+        Vector3 lastPosition = new Vector3(carRigidBody.position.x,carRigidBody.position.y+0.1f,carRigidBody.position.z);
+        Instantiate(moraSplotch,lastPosition, Quaternion.Euler(90,0,0));
+        powerList[0] = 0;
+        powerList[1] = 0;
+
         yield return null;
     }
 
@@ -99,10 +113,14 @@ public class itemInventory : MonoBehaviour
             case (fruitType.Chile, fruitType.Chile):
                
                 StartCoroutine(Chile());
+                inventorySlot = 0;
 
                 break;
             case (fruitType.Mora, fruitType.Mora):
-                Debug.Log("Power Up X");
+
+                StartCoroutine(Mora(moraSplotch));
+                inventorySlot = 0;
+
                 break;
 
 

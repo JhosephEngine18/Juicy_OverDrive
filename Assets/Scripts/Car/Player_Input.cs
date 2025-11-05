@@ -15,7 +15,6 @@ public class Player_Input : MonoBehaviour
     private float T;
     private float Acceleration;
     private float Decceleration;
-    public float speedLimit = 30f;
     private float currentSpeed;
     private float baseFrontTireGrip = 1f;
     private float baseBackTireGrip = 1;
@@ -116,11 +115,11 @@ public class Player_Input : MonoBehaviour
     void checkVelocity()
     {
         currentSpeed = carRigidbody.linearVelocity.magnitude;
-        float offset = currentSpeed - speedLimit;
+        float offset = currentSpeed - carStats.speedLimit;
         getAccelerationDirection();
         if (accelerationDirection.z == 1)
         {
-            if (currentSpeed > speedLimit)
+            if (currentSpeed > carStats.speedLimit)
             {
                 carRigidbody.AddForceAtPosition(-moveDirection * offset, wheelTransform.position);
                 //Debug.Log("car speed: " + carRigidbody.linearVelocity.magnitude);
@@ -128,7 +127,7 @@ public class Player_Input : MonoBehaviour
         }
         else if (accelerationDirection.z == -1)
         {
-            if (currentSpeed > Mathf.Abs(speedLimit))
+            if (currentSpeed > Mathf.Abs(carStats.speedLimit))
             {
                 carRigidbody.AddForceAtPosition(moveDirection * offset, wheelTransform.position);
             }
