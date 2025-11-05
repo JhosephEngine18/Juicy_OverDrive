@@ -89,7 +89,7 @@ public class Player_Input : MonoBehaviour
 
     void Accelerate(Vector3 direction)
     {
-        Debug.Log("Speed: "+carRigidbody.linearVelocity.magnitude);
+        //Debug.Log("Speed: "+carRigidbody.linearVelocity.magnitude);
         moveDirection = wheelTransform.forward;
         getAccelerationDirection();
         //Si la dirección en Z es == 1 nos movemos para delante, si es == -1 nos movemos para atrás

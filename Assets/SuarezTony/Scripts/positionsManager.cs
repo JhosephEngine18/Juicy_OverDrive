@@ -37,16 +37,16 @@ public class positionsManager : MonoBehaviour
             .ThenByDescending(c =>
             {
                 if (c == player.gameObject) return player.currentCheckpoint;
-                else return 0; 
+                else return c.GetComponent<NPC>().index;
             })
             .ThenBy(c =>
             {
                 Transform target;
 
                 if (c == player.gameObject)
-                    target = player.NextCheckpoint; 
+                    target = player.NextCheckpoint;
                 else
-                    target = startLine;             
+                    target = startLine; // o podrías usar npc.NextCheckpoint si también lo manejas
 
                 return Vector3.Distance(c.transform.position, target.position);
             })

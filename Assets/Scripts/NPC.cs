@@ -11,7 +11,7 @@ public class NPC : MonoBehaviour
 {
     //Guarda los waypoints que tiene que cruzar el npc
     public GameObject[] _checkCheckpoints;
-    private int index = 0;
+    public int index = 0;
     [SerializeField] private float TurningSpeed = 5f;
     [SerializeField] private float Movespeed = 5f; // Speed for wheel spinning
     private Vector3 direction;
