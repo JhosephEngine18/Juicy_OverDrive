@@ -14,7 +14,7 @@ public class Car : ScriptableObject
     //
     public float minSpeed = 0f;
     public float maxSpeed = 20f;
-    public float T = 0.0f;
+    public float speedLimit = 30f;
 
     public float frontTireGrip = 0.50f;
     public float backTireGrip = 0.25f;
