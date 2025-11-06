@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e8011c339936b7c4a84d7d3052ffb5f0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - carStats: {fileID: 11400000, guid: 24d19ae99259d3344b8a7eb46c3e00e1, type: 2}
+  - FRWheelControl: {instanceID: 0}
+  - FLWheelControl: {instanceID: 0}
+  - parent: {instanceID: 0}
+  - splotch: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

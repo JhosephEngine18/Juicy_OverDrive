@@ -6,10 +6,14 @@ using static itemInventory;
 
 public class itemInventory : MonoBehaviour
 {
-
+    public Player_Input FRWheelControl;
+    public Player_Input FLWheelControl;
     [SerializeField] private Car carStats;
+    [SerializeField]private Transform FRWheelTransform;
+    [SerializeField]private Transform FLWheelTransform;
     public GameObject moraSplotch;
 
+    
     Car_Inputs car;
     InputAction useItem;
 
@@ -28,6 +32,8 @@ public class itemInventory : MonoBehaviour
     private Rigidbody carRigidBody;
     private Transform carTransform;
     private Collider carCollider;
+    
+    public bool didSplotchHappen;
 
     private void Awake()
     {
@@ -41,6 +47,7 @@ public class itemInventory : MonoBehaviour
     {
         useItem = car.FindAction("Throw");
         carStats.maxSpeed = 5;
+        carStats.speedLimit = 30;
     }
 
     private void OnEnable()
@@ -57,8 +64,8 @@ public class itemInventory : MonoBehaviour
     {
 
         powerupManager();
-        
-        
+        StartCoroutine(returnToNormal());
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -72,13 +79,21 @@ public class itemInventory : MonoBehaviour
         }
     }
 
-
+    void powerupManager () 
+    {
+        if (useItem.IsPressed()) 
+        {
+            Debug.Log("Le picaste");
+            MixFruits(powerList[0], powerList[1]);
+        }
+    }
+    
     IEnumerator Chile()
     {
         carStats.speedLimit = 40;
-        carStats.minSpeed = 2;
-        carStats.maxSpeed = 10;
-        yield return new WaitForSeconds(5f);
+        carRigidBody.AddForceAtPosition(Vector3.forward * (65 * Time.fixedDeltaTime), FRWheelTransform.position);
+        carRigidBody.AddForceAtPosition(Vector3.forward * (65 * Time.fixedDeltaTime), FLWheelTransform.position);
+        yield return new WaitForSeconds(1f);
         carStats.minSpeed = 1;
         carStats.maxSpeed = 5;
         carStats.speedLimit = 30;
@@ -96,16 +111,20 @@ public class itemInventory : MonoBehaviour
 
         yield return null;
     }
-
-    void powerupManager () 
+    IEnumerator returnToNormal()
     {
-        if (useItem.IsPressed()) 
+        if (didSplotchHappen)
         {
-            Debug.Log("Le picaste");
-            MixFruits(powerList[0], powerList[1]);
+            yield return new WaitForSeconds(2f);
+            Debug.Log("Returning to normal");
+            carStats.frontTireGrip = 1;
+            carStats.backTireGrip = 1;
+            didSplotchHappen = false;
+            FRWheelControl.car.Enable();
+            FLWheelControl.car.Enable();
+            yield return null;
         }
     }
-
     void MixFruits(fruitType fruitA, fruitType fruitB)
     {
         switch (fruitA, fruitB)
