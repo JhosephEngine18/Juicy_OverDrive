@@ -27,7 +27,7 @@ public class Player_Input : MonoBehaviour
     private Quaternion currentRotation;
 
     //Referencia a la clase de C# de nuestros Inputs
-    Car_Inputs car;
+    public Car_Inputs car;
 
     //Declaramos las inputActions que vamos a usar en el código
     private InputAction playerDirection;
