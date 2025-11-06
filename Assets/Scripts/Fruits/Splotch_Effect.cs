@@ -13,7 +13,7 @@ public class Splotch_Effect : MonoBehaviour
     [SerializeField]private GameObject parent;
     public itemInventory splotch;
     private Rigidbody carRB;
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Collider>().CompareTag("car"))
@@ -24,11 +24,6 @@ public class Splotch_Effect : MonoBehaviour
             
 
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        StartCoroutine(returnToNormal());
     }
     
 
