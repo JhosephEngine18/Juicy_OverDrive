@@ -8,8 +8,7 @@ public class UIGameplay : MonoBehaviour
     public TextMeshProUGUI Posicion, Laps;
     void Start()
     {
-        posicionJugador = GameObject.Find("positionManager").GetComponent<positionsManager>();
-        check = GameObject.Find("beetle").GetComponent<Check_Checkpoints>();
+
     }
 
     // Update is called once per frame
