@@ -5,14 +5,11 @@ using UnityEngine;
 
 public class Check_Checkpoints : MonoBehaviour
 {
-    //public static event Action<bool> Reseting;
     public GameObject[] CheckpointsList;
     public GameObject Goal;
-    int Laps = 0;
+    int Laps = 1;
     int index = 0;
     int MaxCheckpoints;
-    //public static event Action<int> OnLapChecked;
-
     private void Start()
     {
         for (int i = 1; i < CheckpointsList.Length; i++)
@@ -57,9 +54,13 @@ public class Check_Checkpoints : MonoBehaviour
         if (other.CompareTag("Goal") == other)
         {
             Laps++;
-            //OnLapChecked(Laps);
             Goal.SetActive(false);
         }
 
+    }
+
+    public int GetLaps()
+    {
+        return Laps;
     }
 }

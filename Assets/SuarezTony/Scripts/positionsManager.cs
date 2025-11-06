@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Splines;
 
 public class positionsManager : MonoBehaviour
 {
     public carProgress player;           // Aqui se arrastra el script del jugadorrr
     public Transform startLine;          // Aqui se arrastra la linea de metaaa
-
+    private int posicionJugador;
+    
     private List<GameObject> allCars = new List<GameObject>();
     private npcProgress[] npcs;          
 
@@ -46,15 +48,15 @@ public class positionsManager : MonoBehaviour
                 if (c == player.gameObject)
                     target = player.NextCheckpoint;
                 else
-                    target = startLine; // o podrías usar npc.NextCheckpoint si también lo manejas
+                    target = startLine; // o podrï¿½as usar npc.NextCheckpoint si tambiï¿½n lo manejas
 
                 return Vector3.Distance(c.transform.position, target.position);
             })
             .ToList();
 
-        // Posición del jugador
-        int posicionJugador = orden.IndexOf(player.gameObject) + 1;
-        Debug.Log("Posición del jugador: " + posicionJugador + " / " + allCars.Count);
+        // Posiciï¿½n del jugador
+        posicionJugador = orden.IndexOf(player.gameObject) + 1;
+        Debug.Log("Posiciï¿½n del jugador: " + posicionJugador + " / " + allCars.Count);
 
         // Esto dibuja los raycast hacia los otros jugadores segun cuantos hayaaaaa
         foreach (var npc in npcs)
@@ -64,5 +66,10 @@ public class positionsManager : MonoBehaviour
 
             Debug.DrawRay(start, direction, Color.red);
         }
+    }
+
+    public int GetPosition()
+    {
+        return posicionJugador;
     }
 }
