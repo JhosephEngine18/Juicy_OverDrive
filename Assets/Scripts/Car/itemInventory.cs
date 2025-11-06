@@ -91,9 +91,9 @@ public class itemInventory : MonoBehaviour
     IEnumerator Chile()
     {
         carStats.speedLimit = 40;
-        carRigidBody.AddForceAtPosition(Vector3.forward * (65 * Time.fixedDeltaTime), FRWheelTransform.position);
-        carRigidBody.AddForceAtPosition(Vector3.forward * (65 * Time.fixedDeltaTime), FLWheelTransform.position);
-        yield return new WaitForSeconds(1f);
+        carRigidBody.AddForceAtPosition(Vector3.forward * (100 * Time.fixedDeltaTime), FRWheelTransform.position);
+        carRigidBody.AddForceAtPosition(Vector3.forward * (100 * Time.fixedDeltaTime), FLWheelTransform.position);
+        yield return new WaitForSeconds(2f);
         carStats.minSpeed = 1;
         carStats.maxSpeed = 5;
         carStats.speedLimit = 30;
