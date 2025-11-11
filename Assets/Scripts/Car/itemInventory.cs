@@ -6,16 +6,26 @@ using static itemInventory;
 
 public class itemInventory : MonoBehaviour
 {
+    [Header("Car Components")]
     public Player_Input FRWheelControl;
     public Player_Input FLWheelControl;
-    [SerializeField] private Car carStats;
+    [SerializeField]private Car carStats;
     [SerializeField]private Transform FRWheelTransform;
     [SerializeField]private Transform FLWheelTransform;
+    [SerializeField]private Transform ThrowPoint;
+    [Header("Item Prefabs")]
     public GameObject moraSplotch;
+    public GameObject _CherryBomb;
 
     
     Car_Inputs car;
     InputAction useItem;
+    [Header("Cherry Bomb Stats")]
+    [SerializeField] private float throwForce = 10f;
+    [SerializeField] private float upwardsForce = 1f;
+    private Rigidbody BombRb;
+    private bool isBombReady = false; 
+
 
     public enum fruitType
     {
@@ -37,6 +47,7 @@ public class itemInventory : MonoBehaviour
 
     private void Awake()
     {
+        isBombReady=true;
         carTransform = GetComponent<Transform>();
         carRigidBody = GetComponent<Rigidbody>();
         carCollider = GetComponent<BoxCollider>();
@@ -111,6 +122,19 @@ public class itemInventory : MonoBehaviour
 
         yield return null;
     }
+
+    IEnumerator CherryBomb() 
+    {
+       
+        GameObject Bomb = Instantiate(_CherryBomb, ThrowPoint.transform.position, Quaternion.identity);
+        BombRb = Bomb.GetComponent<Rigidbody>();
+        Vector3 ForceToAdd = ThrowPoint.forward*throwForce + ThrowPoint.up*upwardsForce;
+        BombRb.AddForce(ForceToAdd, ForceMode.Impulse);
+        powerList[0] = 0;
+        powerList[1] = 0;
+        yield return new WaitForSeconds(1f);
+        isBombReady = true;
+    }
     IEnumerator returnToNormal()
     {
         if (didSplotchHappen)
@@ -141,9 +165,16 @@ public class itemInventory : MonoBehaviour
                 inventorySlot = 0;
 
                 break;
+            case (fruitType.Cereza, fruitType.Cereza):
+                
+                if (isBombReady)
+                {
+                    isBombReady = false;
+                    StartCoroutine(CherryBomb());
+                    inventorySlot = 0;
+                }
 
-
-
+                break;
             default:
                 Debug.Log("Si hace match con nada");
                 break;
