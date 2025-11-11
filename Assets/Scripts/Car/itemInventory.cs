@@ -141,9 +141,10 @@ public class itemInventory : MonoBehaviour
                 inventorySlot = 0;
 
                 break;
+            case (fruitType.Cereza, fruitType.Cereza):
 
 
-
+                break;
             default:
                 Debug.Log("Si hace match con nada");
                 break;
