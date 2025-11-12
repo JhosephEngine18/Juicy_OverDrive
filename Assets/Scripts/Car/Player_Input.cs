@@ -15,7 +15,7 @@ public class Player_Input : MonoBehaviour
     private float T;
     private float Acceleration;
     private float Decceleration;
-    private float currentSpeed;
+    public  float currentSpeed;
     private float baseFrontTireGrip = 1f;
     private float baseBackTireGrip = 1;
     private float baseTireMass = 5f;
@@ -27,7 +27,7 @@ public class Player_Input : MonoBehaviour
     private Quaternion currentRotation;
 
     //Referencia a la clase de C# de nuestros Inputs
-    public Car_Inputs car;
+    public Car_Inputs carInputs;
 
     //Declaramos las inputActions que vamos a usar en el código
     private InputAction playerDirection;
@@ -49,8 +49,8 @@ public class Player_Input : MonoBehaviour
         
         wheelTransform = gameObject.GetComponent<Transform>();
         carRigidbody = gameObject.GetComponentInParent<Rigidbody>();
-        driftInput = car.FindAction("Drift");
-        playerDirection = car.FindAction("Forward/Backward");
+        driftInput = carInputs.FindAction("Drift");
+        playerDirection = carInputs.FindAction("Forward/Backward");
     }
 
     private void Awake()
@@ -58,18 +58,18 @@ public class Player_Input : MonoBehaviour
         carStats.frontTireGrip = baseFrontTireGrip;
         carStats.backTireGrip = baseBackTireGrip;
         carStats.tireMass = baseTireMass;
-        car = new Car_Inputs();
+        carInputs = new Car_Inputs();
         wheelTurning = GetComponent<frontWheelTurning>();
     }
 
     private void OnEnable()
     {
-        car.Enable();
+        carInputs.Enable();
     }
 
     private void OnDisable()
     {
-        car.Disable();
+        carInputs.Disable();
     }
 
     private void FixedUpdate()
@@ -88,7 +88,7 @@ public class Player_Input : MonoBehaviour
 
     void Accelerate(Vector3 direction)
     {
-        //Debug.Log("Speed: "+carRigidbody.linearVelocity.magnitude);
+        //Debug.Log("Speed: "+carInputsRigidbody.linearVelocity.magnitude);
         moveDirection = wheelTransform.forward;
         getAccelerationDirection();
         //Si la dirección en Z es == 1 nos movemos para delante, si es == -1 nos movemos para atrás
