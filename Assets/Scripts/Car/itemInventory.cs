@@ -42,8 +42,6 @@ public class itemInventory : MonoBehaviour
     private Rigidbody carRigidBody;
     private Transform carTransform;
     private Collider carCollider;
-    
-    public bool didSplotchHappen;
 
     private void Awake()
     {
@@ -75,7 +73,6 @@ public class itemInventory : MonoBehaviour
     {
 
         powerupManager();
-        StartCoroutine(returnToNormal());
 
     }
 
@@ -115,7 +112,7 @@ public class itemInventory : MonoBehaviour
 
     IEnumerator Mora(GameObject moraSplotch) 
     {
-        Vector3 lastPosition = new Vector3(carRigidBody.position.x,carRigidBody.position.y+0.1f,carRigidBody.position.z);
+        Vector3 lastPosition = new Vector3(carRigidBody.position.x,carRigidBody.position.y+0.1f,carRigidBody.position.z-3f);
         Instantiate(moraSplotch,lastPosition, Quaternion.Euler(90,0,0));
         powerList[0] = 0;
         powerList[1] = 0;
@@ -135,20 +132,7 @@ public class itemInventory : MonoBehaviour
         yield return new WaitForSeconds(1f);
         isBombReady = true;
     }
-    IEnumerator returnToNormal()
-    {
-        if (didSplotchHappen)
-        {
-            yield return new WaitForSeconds(2f);
-            Debug.Log("Returning to normal");
-            carStats.frontTireGrip = 1;
-            carStats.backTireGrip = 1;
-            didSplotchHappen = false;
-            FRWheelControl.carInputs.Enable();
-            FLWheelControl.carInputs.Enable();
-            yield return null;
-        }
-    }
+    
     void MixFruits(fruitType fruitA, fruitType fruitB)
     {
         switch (fruitA, fruitB)

@@ -8,11 +8,25 @@ using UnityEngine.InputSystem;
 public class Splotch_Effect : MonoBehaviour
 {
     [SerializeField]private Car carStats;
+    [Header("Needed Car Components")]
+    private GameObject Beetle;
+    private GameObject FRWheel;
+    private GameObject FLWheel;
     [SerializeField]private Player_Input FRWheelControl;
     [SerializeField]private Player_Input FLWheelControl;
     [SerializeField]private GameObject parent;
-    public itemInventory splotch;
+    private itemInventory splotch;
     private Rigidbody carRB;
+
+    private void Start()
+    {
+        Beetle = GameObject.FindWithTag("car");
+        FRWheel = GameObject.FindWithTag("FRWheel");
+        FLWheel = GameObject.FindWithTag("FLWheel");
+        splotch = Beetle.GetComponent<itemInventory>();
+        FRWheelControl = FRWheel.GetComponent<Player_Input>();
+        FLWheelControl = FLWheel.GetComponent<Player_Input>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,8 +49,8 @@ public class Splotch_Effect : MonoBehaviour
         carRB.AddTorque(Vector3.up*40, ForceMode.Impulse);
         carStats.frontTireGrip = 0;
         carStats.backTireGrip = 0;
-        splotch.didSplotchHappen = true;
         Destroy(parent);
+        yield return StartCoroutine(returnToNormal());
         yield return null;
     }
 
