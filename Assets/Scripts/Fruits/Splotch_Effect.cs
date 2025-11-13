@@ -30,8 +30,8 @@ public class Splotch_Effect : MonoBehaviour
     IEnumerator SplotchEffect()
     {
         carRB.linearVelocity = Vector3.zero;
-        FRWheelControl.car.Disable();
-        FLWheelControl.car.Disable();
+        FRWheelControl.carInputs.Disable();
+        FLWheelControl.carInputs.Disable();
         carRB.AddTorque(Vector3.up*40, ForceMode.Impulse);
         carStats.frontTireGrip = 0;
         carStats.backTireGrip = 0;
@@ -46,8 +46,8 @@ public class Splotch_Effect : MonoBehaviour
         Debug.Log("Returning to normal");
         carStats.frontTireGrip = 1;
         carStats.backTireGrip = 1;
-        FRWheelControl.car.Enable();
-        FLWheelControl.car.Enable();
+        FRWheelControl.carInputs.Enable();
+        FLWheelControl.carInputs.Enable();
         yield return null;
     }
 }

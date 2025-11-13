@@ -128,7 +128,7 @@ public class itemInventory : MonoBehaviour
        
         GameObject Bomb = Instantiate(_CherryBomb, ThrowPoint.transform.position, Quaternion.identity);
         BombRb = Bomb.GetComponent<Rigidbody>();
-        Vector3 ForceToAdd = ThrowPoint.forward*throwForce + ThrowPoint.up*upwardsForce;
+        Vector3 ForceToAdd = ThrowPoint.forward*(FRWheelControl.currentSpeed*throwForce) + ThrowPoint.up*(FRWheelControl.currentSpeed* upwardsForce);
         BombRb.AddForce(ForceToAdd, ForceMode.Impulse);
         powerList[0] = 0;
         powerList[1] = 0;
@@ -144,8 +144,8 @@ public class itemInventory : MonoBehaviour
             carStats.frontTireGrip = 1;
             carStats.backTireGrip = 1;
             didSplotchHappen = false;
-            FRWheelControl.car.Enable();
-            FLWheelControl.car.Enable();
+            FRWheelControl.carInputs.Enable();
+            FLWheelControl.carInputs.Enable();
             yield return null;
         }
     }
