@@ -10388,6 +10388,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1959943874814824952, guid: 0830086465bbffd4ab64ee6fc8c82d74, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c1eed38304e08e945b1c662aebb2f726, type: 2}
+    - target: {fileID: 1959943874814824952, guid: 0830086465bbffd4ab64ee6fc8c82d74, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c1eed38304e08e945b1c662aebb2f726, type: 2}
     - target: {fileID: 3638911070570068518, guid: 0830086465bbffd4ab64ee6fc8c82d74, type: 3}
       propertyPath: m_Name
       value: Simple Retro Car
