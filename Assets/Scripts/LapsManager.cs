@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LapsManager : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class LapsManager : MonoBehaviour
     public positionsManager positionsScript;
     public int MaxLaps;
     public TextMeshProUGUI StateOfGame;
+    public GameObject StateGameObject;
 
     void Start()
     {
@@ -18,7 +21,7 @@ public class LapsManager : MonoBehaviour
         {
             MaxLaps = 1;
         }
-        StateOfGame.enabled = false;
+        StateGameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,7 +37,13 @@ public class LapsManager : MonoBehaviour
             {
                 StateOfGame.text = "You Lose";
             }
-            StateOfGame.enabled = true;
+            StateGameObject.SetActive(true);
+            StartCoroutine(RestartGame());
         }
+    }
+    IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Menu");
     }
 }

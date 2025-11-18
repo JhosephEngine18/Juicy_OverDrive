@@ -6,6 +6,7 @@ public class UIGameplay : MonoBehaviour
     public positionsManager posicionJugador;
     public Check_Checkpoints check;
     public TextMeshProUGUI Posicion, Laps;
+    public LapsManager MaxLaps;
     void Start()
     {
 
@@ -15,7 +16,7 @@ public class UIGameplay : MonoBehaviour
     void Update()
     {
         Posicion.text = posicionJugador.GetPosition().ToString();
-        Laps.text = "Laps:" + check.GetLaps() + "/3";
+        Laps.text = "Laps:" + check.GetLaps() + "/" + MaxLaps.MaxLaps;
     }
     
 }
