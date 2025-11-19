@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{49d53f81-62e2-46a6-b806-243981eac28b}">
+		<property name="assetPath">
+			<value>Manazon/Manazon_Pitch_Agudo_04.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.75</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{228b187c-9836-4407-8045-05775cdb7af6}</destination>
+		</relationship>
+	</object>
+</objects>

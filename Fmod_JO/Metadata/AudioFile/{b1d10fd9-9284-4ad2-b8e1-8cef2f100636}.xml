@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{b1d10fd9-9284-4ad2-b8e1-8cef2f100636}">
+		<property name="assetPath">
+			<value>Manazon/Manazon_Pitch_Grave_03.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.0119791666666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{228b187c-9836-4407-8045-05775cdb7af6}</destination>
+		</relationship>
+	</object>
+</objects>
