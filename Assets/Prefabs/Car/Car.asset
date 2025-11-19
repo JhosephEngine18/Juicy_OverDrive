@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Car
   m_EditorClassIdentifier: 
   springForce: 75
-  restDistance: 0.5
+  restDistance: 0.61
   springDamper: 5
   turnSpeed: 5
   minSpeed: 2
   maxSpeed: 5
-  T: 0
-  frontTireGrip: 1
-  backTireGrip: 0.5
+  speedLimit: 30
+  frontTireGrip: 0.999997
+  backTireGrip: 0.999997
   tireMass: 5
