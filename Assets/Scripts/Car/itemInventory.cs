@@ -24,7 +24,9 @@ public class itemInventory : MonoBehaviour
     [SerializeField] private float throwForce = 10f;
     [SerializeField] private float upwardsForce = 1f;
     private Rigidbody BombRb;
-    private bool isBombReady = false; 
+    private bool isBombReady = false;
+    [Header("Splotch Stats")]
+    public bool didSplotchHappen = false;
 
 
     public enum fruitType
@@ -73,6 +75,12 @@ public class itemInventory : MonoBehaviour
     {
 
         powerupManager();
+
+        if (didSplotchHappen)
+        {
+            StartCoroutine(returnToNormal());
+        }
+
 
     }
 
@@ -132,7 +140,19 @@ public class itemInventory : MonoBehaviour
         yield return new WaitForSeconds(1f);
         isBombReady = true;
     }
-    
+
+    IEnumerator returnToNormal()
+    {
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Returning to normal");
+        carStats.frontTireGrip = 1;
+        carStats.backTireGrip = 1;
+        FRWheelControl.carInputs.Enable();
+        FLWheelControl.carInputs.Enable();
+        didSplotchHappen = false;
+        yield return null;
+    }
+
     void MixFruits(fruitType fruitA, fruitType fruitB)
     {
         switch (fruitA, fruitB)
@@ -147,7 +167,7 @@ public class itemInventory : MonoBehaviour
 
                 StartCoroutine(Mora(moraSplotch));
                 inventorySlot = 0;
-
+                
                 break;
             case (fruitType.Cereza, fruitType.Cereza):
                 

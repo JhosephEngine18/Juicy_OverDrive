@@ -15,8 +15,11 @@ public class Splotch_Effect : MonoBehaviour
     [SerializeField]private Player_Input FRWheelControl;
     [SerializeField]private Player_Input FLWheelControl;
     [SerializeField]private GameObject parent;
+    [SerializeField]private itemInventory inventory;
     private itemInventory splotch;
     private Rigidbody carRB;
+
+    private bool didSplotchHappen = false;
 
     private void Start()
     {
@@ -31,12 +34,12 @@ public class Splotch_Effect : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Collider>().CompareTag("car"))
-        { 
+        {
             carRB = other.GetComponent<Rigidbody>();
-            
-            StartCoroutine(SplotchEffect());
-            
+            inventory = other.GetComponent<itemInventory>();
 
+            StartCoroutine(SplotchEffect());
+           
         }
     }
     
@@ -49,19 +52,10 @@ public class Splotch_Effect : MonoBehaviour
         carRB.AddTorque(Vector3.up*40, ForceMode.Impulse);
         carStats.frontTireGrip = 0;
         carStats.backTireGrip = 0;
+        inventory.didSplotchHappen = true;
         Destroy(parent);
-        yield return StartCoroutine(returnToNormal());
         yield return null;
     }
 
-    IEnumerator returnToNormal()
-    {
-        yield return new WaitForSeconds(2f);
-        Debug.Log("Returning to normal");
-        carStats.frontTireGrip = 1;
-        carStats.backTireGrip = 1;
-        FRWheelControl.carInputs.Enable();
-        FLWheelControl.carInputs.Enable();
-        yield return null;
-    }
+    
 }
