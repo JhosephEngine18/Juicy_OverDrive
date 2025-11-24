@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{5822eec7-5336-471d-b4b9-09cfea21698d}">
+	<object class="AudioFile" id="{2096790b-9eb5-4fe1-b04f-3fe42a521df2}">
 		<property name="assetPath">
-			<value>Musica/GamePlay Double_Line JO PreMaster.wav</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>Foleys/Blender_SFX_04.wav</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>44.0999985</value>
+			<value>48</value>
 		</property>
 		<property name="channelCount">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<property name="length">
-			<value>106</value>
+			<value>6.5593750000000002</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{228b187c-9836-4407-8045-05775cdb7af6}</destination>
