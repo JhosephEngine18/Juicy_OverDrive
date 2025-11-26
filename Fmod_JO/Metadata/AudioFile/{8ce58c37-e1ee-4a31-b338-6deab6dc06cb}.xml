@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{8ce58c37-e1ee-4a31-b338-6deab6dc06cb}">
 		<property name="assetPath">
 			<value>Manazon/Manazon_Pitch_Agudo_02.wav</value>

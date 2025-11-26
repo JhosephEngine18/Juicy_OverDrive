@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{b1d10fd9-9284-4ad2-b8e1-8cef2f100636}">
 		<property name="assetPath">
 			<value>Manazon/Manazon_Pitch_Grave_03.wav</value>
