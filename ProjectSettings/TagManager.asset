@@ -12,6 +12,7 @@ TagManager:
   - FxTemporaire
   - FRWheel
   - FLWheel
+  - Walls
   layers:
   - Default
   - TransparentFX
