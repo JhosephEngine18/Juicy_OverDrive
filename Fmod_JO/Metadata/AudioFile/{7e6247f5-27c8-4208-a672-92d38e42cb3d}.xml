@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{2096790b-9eb5-4fe1-b04f-3fe42a521df2}">
+	<object class="AudioFile" id="{7e6247f5-27c8-4208-a672-92d38e42cb3d}">
 		<property name="assetPath">
-			<value>Foleys/Blender_SFX_04.wav</value>
+			<value>Foleys/Countdown_Timer.wav</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>48</value>
+			<value>44.0999985</value>
 		</property>
 		<property name="channelCount">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<property name="length">
-			<value>6.5593750000000002</value>
+			<value>7</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{228b187c-9836-4407-8045-05775cdb7af6}</destination>
