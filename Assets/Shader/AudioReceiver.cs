@@ -4,7 +4,7 @@ using UnityEngine;
 public class AudioReceiver : MonoBehaviour
 {
     public AudioSource _BackgroundMusic;
-    private float[] audioBuffer = new float[256];
+    private float[] audioBuffer = new float[1024];
     private int audioLevelID = 0; 
     private void Start()
     {
@@ -22,7 +22,13 @@ public class AudioReceiver : MonoBehaviour
         }
         
         float rms = Mathf.Lerp(sum, 1, Time.deltaTime);
-        
-        Shader.SetGlobalFloat(audioLevelID, rms);
+        if (rms >= 0.023f)
+        { 
+            Shader.SetGlobalFloat(audioLevelID, 1);
+        }
+        else
+        {
+            Shader.SetGlobalFloat(audioLevelID, 0.7f);
+        }
     }
 }

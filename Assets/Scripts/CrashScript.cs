@@ -5,16 +5,19 @@ using FMOD.Studio;
 using FMODUnity;
 using Unity.Cinemachine;
 using UnityEngine;
+using EventHandler = FMODUnity.EventHandler;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class CrashScript : MonoBehaviour
 {
     public EventReference Crash;
-        private EventInstance Crashed;
+    public Transform cam;
+    private EventInstance Crashed;
+    private RigidBody rb;
     private void Awake()
     {
         shake.enabled = false;
-        Crashed.setVolume(50);
+        Crashed = RuntimeManager.CreateInstance(Crash);
     }
 
     public CinemachineBasicMultiChannelPerlin shake;
@@ -23,10 +26,12 @@ public class CrashScript : MonoBehaviour
         if (other.gameObject.CompareTag("npc") || other.gameObject.CompareTag("Walls"))
         {
             shake.enabled = true;
-            RuntimeManager.PlayOneShotAttached(Crash, gameObject);
+            RuntimeManager.AttachInstanceToGameObject(Crashed, cam);
+            Crashed.start();
             StartCoroutine(StopShake());
         }
     }
+    
 
     IEnumerator StopShake()
     {
