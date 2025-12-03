@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 01b3d9b018278584384938850e103b51, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 96aaea74b3be41543a1b4d74c1f64478, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2185,6 +2185,101 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8389205834894061061, guid: 66d271533f6d75c49ae9d706f6882fe6, type: 3}
   m_PrefabInstance: {fileID: 303336775}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &320746899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 320746902}
+  - component: {fileID: 320746904}
+  - component: {fileID: 320746905}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &320746902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320746899}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &320746904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320746899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: Goal
+  EventReference:
+    Guid:
+      Data1: 15049147
+      Data2: 1182188035
+      Data3: 234882214
+      Data4: 108227517
+    Path: event:/SFX/Meta
+  Event: 
+  EventPlayTrigger: 3
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &320746905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320746899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 502652635
+      Data2: 1198775577
+      Data3: -703819618
+      Data4: 263213811
+    Path: event:/Music/Gameplay_Music
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &328161875 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 37383439202594211, guid: fff71691ee75edf43bfd65767a981402, type: 3}
@@ -9966,6 +10061,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 63fe523954a286141b70b57f5d017bc6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1546009001}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 63fe523954a286141b70b57f5d017bc6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1546009002}
     - targetCorrespondingSourceObject: {fileID: 5920007310616795288, guid: 63fe523954a286141b70b57f5d017bc6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1555180126}
@@ -10613,7 +10711,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa533b45947e104d8942138386886a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Crash:
+    Guid:
+      Data1: -1633707559
+      Data2: 1079890251
+      Data3: 59150245
+      Data4: 1102150951
+    Path: event:/SFX/Crash
   shake: {fileID: 849590980}
+--- !u!114 &1546009002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504534770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2b2f9d394376d47beb319921995fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PitchCarSound:
+    Guid:
+      Data1: -1487600607
+      Data2: 1206547838
+      Data3: 1847848370
+      Data4: 1722992549
+    Path: event:/SFX/Motor
 --- !u!1001 &1546810257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15716,3 +15840,4 @@ SceneRoots:
   - {fileID: 1978627002}
   - {fileID: 755575849}
   - {fileID: 1504823232}
+  - {fileID: 320746902}
