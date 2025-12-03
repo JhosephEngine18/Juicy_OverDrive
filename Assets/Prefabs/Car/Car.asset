@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16de6198a0e316b478e8b62a19b6eb89, type: 3}
   m_Name: Car
   m_EditorClassIdentifier: 
-  springForce: 75
-  restDistance: 0.61
+  springForce: 84.7
+  restDistance: 0.55
   springDamper: 5
   turnSpeed: 5
-  minSpeed: 5
-  maxSpeed: 10
-  speedLimit: 40
-  frontTireGrip: 0.999997
-  backTireGrip: 0.999997
+  minSpeed: 0.49
+  maxSpeed: 5
+  speedLimit: 30
+  frontTireGrip: 1
+  backTireGrip: 1
   tireMass: 5
