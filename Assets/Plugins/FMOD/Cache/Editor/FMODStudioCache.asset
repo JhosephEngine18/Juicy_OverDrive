@@ -123,7 +123,7 @@ MonoBehaviour:
   Path: Fmod_JO/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639003027651299832
+  lastModified: 639003028460518154
   FileSizes:
   - Name: Desktop
     Value: 1654
@@ -143,7 +143,7 @@ MonoBehaviour:
   Path: Fmod_JO/Build/Desktop/Bank_Foleys.bank
   Name: Bank_Foleys
   StudioPath: bank:/Bank_Foleys
-  lastModified: 639003027651006112
+  lastModified: 639003028460405930
   FileSizes:
   - Name: Desktop
     Value: 663520
@@ -364,7 +364,7 @@ MonoBehaviour:
   - {fileID: -5366208335506670142}
   StringsBanks:
   - {fileID: -6081013646846316050}
-  cacheTime: 639003027651309901
+  cacheTime: 639003028460518154
   cacheVersion: 131632
 --- !u!114 &384448393810219596
 MonoBehaviour:
@@ -381,7 +381,7 @@ MonoBehaviour:
   Path: Fmod_JO/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 639003027651309901
+  lastModified: 639003028460518154
   FileSizes:
   - Name: Desktop
     Value: 39232
@@ -563,7 +563,7 @@ MonoBehaviour:
   Path: "Fmod_JO/Build/Desktop/Bank_M\xFAsica.bank"
   Name: "Bank_M\xFAsica"
   StudioPath: "bank:/Bank_M\xFAsica"
-  lastModified: 639003027651264576
+  lastModified: 639003028460498394
   FileSizes:
   - Name: Desktop
     Value: 2900096

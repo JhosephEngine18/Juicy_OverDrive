@@ -16,7 +16,7 @@ RenderSettings:
   serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
+  m_FogMode: 1
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
@@ -28,7 +28,7 @@ RenderSettings:
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 96aaea74b3be41543a1b4d74c1f64478, type: 2}
   m_HaloStrength: 0.5
-  m_FlareStrength: 1
+  m_FlareStrength: 0.63
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
@@ -2271,15 +2271,15 @@ MonoBehaviour:
     Path: event:/Music/Gameplay_Music
   Event: 
   EventPlayTrigger: 1
-  EventStopTrigger: 0
+  EventStopTrigger: 2
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   NonRigidbodyVelocity: 0
   Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1000
+  OverrideMaxDistance: 1000
 --- !u!1 &328161875 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 37383439202594211, guid: fff71691ee75edf43bfd65767a981402, type: 3}
@@ -10738,6 +10738,14 @@ MonoBehaviour:
       Data3: 1847848370
       Data4: 1722992549
     Path: event:/SFX/Motor
+  pitch: 0.02
+  BakeCarSound:
+    Guid:
+      Data1: 1419337837
+      Data2: 1226343532
+      Data3: 1325331389
+      Data4: -1479295481
+    Path: event:/SFX/Break
 --- !u!1001 &1546810257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11964,9 +11972,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LapsScript: {fileID: 1504534774}
   positionsScript: {fileID: 1175703119}
-  MaxLaps: 5
+  MaxLaps: 1
   StateOfGame: {fileID: 1328572503}
   StateGameObject: {fileID: 6817913510109674448}
+  releaseAudio:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1546009002}
+        m_TargetAssemblyTypeName: AudioSystem, Assembly-CSharp
+        m_MethodName: stopAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1695007699
 MonoBehaviour:
   m_ObjectHideFlags: 0
