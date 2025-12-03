@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class LapsManager : MonoBehaviour
@@ -11,12 +12,11 @@ public class LapsManager : MonoBehaviour
     public int MaxLaps;
     public TextMeshProUGUI StateOfGame;
     public GameObject StateGameObject;
+    public UnityEvent releaseAudio;
 
     void Start()
     {
-        LapsScript = GameObject.Find("beetle").GetComponent<Check_Checkpoints>();
-        positionsScript = GameObject.Find("beetle").GetComponent<positionsManager>();
-
+        LapsScript = GameObject.Find("FruitCar").GetComponent<Check_Checkpoints>();
         if (MaxLaps == 0)
         {
             MaxLaps = 1;
@@ -44,6 +44,8 @@ public class LapsManager : MonoBehaviour
     IEnumerator RestartGame()
     {
         yield return new WaitForSeconds(5);
+        //
+        releaseAudio.Invoke();
         SceneManager.LoadScene("Menu");
     }
 }
