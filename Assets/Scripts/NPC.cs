@@ -20,10 +20,10 @@ public class NPC : MonoBehaviour
     float timer = 1;
     public Transform[] Wheels = new Transform[4];
     private float currentSpeed;
+    public StartRace StartRace;
     Vector3 initialRotation;
     float currentwheelrotation;
 
-    
     void Start()
     {
         initialRotation = new Vector3(1f, 1f,1f);
@@ -44,7 +44,10 @@ public class NPC : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(transform.forward * Movespeed);
+        if (StartRace.Race)
+        {
+            rb.AddForce(transform.forward * Movespeed);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

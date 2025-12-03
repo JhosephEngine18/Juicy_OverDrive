@@ -17,6 +17,9 @@ public class AudioSystem : MonoBehaviour
     [Header("Brake Effects")]
     public EventReference BakeCarSound;
     private EventInstance BakeCarInstance;
+    [Header("Background Music")]
+    public GameObject BackgroundMusic;
+    public StartRace StartRace;
     
     private void OnEnable()
     {
@@ -31,6 +34,7 @@ public class AudioSystem : MonoBehaviour
     private void Awake()
     {
         carInputs = new Car_Inputs();
+        BackgroundMusic.SetActive(false);
     }
 
     void Start()
@@ -46,15 +50,23 @@ public class AudioSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (driftInput.IsPressed())
+        if (driftInput.IsPressed() && rb.linearVelocity.magnitude > 1f)
         {
             RuntimeManager.PlayOneShotAttached(BakeCarSound, gameObject);
         }
-        else if (driftInput.WasReleasedThisFrame())
+        else if (driftInput.WasReleasedThisFrame() && rb.linearVelocity.magnitude > 1f)
         {
             BakeCarInstance.release();
         }
         PitchCarInstance.setPitch(Math.Clamp(rb.linearVelocity.magnitude * pitch, 0, 1));
+    }
+
+    private void FixedUpdate()
+    {
+        if (StartRace.Race)
+        {
+            BackgroundMusic.SetActive(true);
+        }
     }
 
     private void OnDestroy()

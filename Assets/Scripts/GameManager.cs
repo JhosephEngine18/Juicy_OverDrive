@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] EventSystem eventSystem;
     [SerializeField] private Selectable firstitemtoselect;
+    RigidBody rb;
 
     private void Awake()
     {
@@ -19,6 +20,11 @@ public class GameManager : MonoBehaviour
             return;
         
         eventSystem.firstSelectedGameObject = firstitemtoselect.gameObject;
+    }
+
+    private void Update()
+    { 
+        
     }
 
     public void ChangeScene(int scene)

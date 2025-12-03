@@ -36,6 +36,7 @@ Shader "Jose´s_Shaders/SkyBox"
             sampler2D _MainTex;
             float4 _MainTex_ST;
             half4 _MainColor;
+            
             float _AudioLevel;
 
             v2f vert (appdata v)
@@ -53,7 +54,7 @@ Shader "Jose´s_Shaders/SkyBox"
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                return col * _MainColor.rgba * _AudioLevel * 5;
+                return col * _MainColor.rgba * _AudioLevel;
             }
             ENDCG
         }
