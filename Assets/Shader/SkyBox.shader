@@ -53,7 +53,7 @@ Shader "Jose´s_Shaders/SkyBox"
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                return col * _MainColor.rgba * _AudioLevel;
+                return col * _MainColor.rgba * _AudioLevel * 5;
             }
             ENDCG
         }
