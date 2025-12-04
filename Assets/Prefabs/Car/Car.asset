@@ -15,10 +15,10 @@ MonoBehaviour:
   springForce: 84.7
   restDistance: 0.55
   springDamper: 5
-  turnSpeed: 5
+  turnSpeed: 7.48
   minSpeed: 1
-  maxSpeed: 19.7
+  maxSpeed: 70.5
   speedLimit: 30
-  frontTireGrip: 0.7850038
-  backTireGrip: 0.7850038
+  frontTireGrip: 0.74920833
+  backTireGrip: 0.74920833
   tireMass: 5
