@@ -19,7 +19,7 @@ public class carProgress : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+   /* private void OnTriggerEnter(Collider other)
     {
 
 
@@ -36,5 +36,5 @@ public class carProgress : MonoBehaviour
             }
         }
 
-    }
+    }*/
 }

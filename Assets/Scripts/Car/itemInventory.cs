@@ -57,8 +57,7 @@ public class itemInventory : MonoBehaviour
     private void Start()
     {
         useItem = car.FindAction("Throw");
-        carStats.maxSpeed = 5;
-        carStats.speedLimit = 30;
+        
     }
 
     private void OnEnable()
@@ -107,9 +106,10 @@ public class itemInventory : MonoBehaviour
     IEnumerator Chile()
     {
         carStats.speedLimit = 40;
+        carStats.maxSpeed = 10;
         carRigidBody.AddForceAtPosition(Vector3.forward * (100 * Time.fixedDeltaTime), FRWheelTransform.position);
         carRigidBody.AddForceAtPosition(Vector3.forward * (100 * Time.fixedDeltaTime), FLWheelTransform.position);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         carStats.minSpeed = 1;
         carStats.maxSpeed = 5;
         carStats.speedLimit = 30;

@@ -15,6 +15,8 @@ public class Explosion : MonoBehaviour
     public Rigidbody carRigidBody;
     public Car carStats;
 
+    private BombBehaviour _bombBehaviour;
+
     private void Awake()
     {
         
@@ -29,6 +31,7 @@ public class Explosion : MonoBehaviour
         FRWheelControl = FRWheel.GetComponent<Player_Input>();
         FLWheelControl = FLWheel.GetComponent<Player_Input>();
         carRigidBody = Beetle.GetComponent<Rigidbody>();
+        _bombBehaviour = GetComponentInParent<BombBehaviour>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,6 +39,7 @@ public class Explosion : MonoBehaviour
         if (other.gameObject.CompareTag("car")) 
         {
             StartCoroutine(BombEffect());
+            
         }
     }
 
@@ -44,10 +48,12 @@ public class Explosion : MonoBehaviour
         carRigidBody.linearVelocity = Vector3.zero;
         FRWheelControl.carInputs.Disable();
         FLWheelControl.carInputs.Disable();
-        carRigidBody.AddTorque(Vector3.up * 40, ForceMode.Impulse);
         carStats.frontTireGrip = 0;
         carStats.backTireGrip = 0;
+        carRigidBody.AddTorque(Vector3.up * 40, ForceMode.Impulse);
         yield return StartCoroutine(returnToNormal());
+        _bombBehaviour.exploded = true;
+        Destroy(gameObject);
         yield return null;
     }
 
