@@ -22,6 +22,7 @@ public class Player_Input : MonoBehaviour
     private float driftFrontTireGrip = 0.1f;
     private float driftBackTireGrip = 0.1f;
     private float driftTireMass = 0f;
+    private float speedLimit;
     [SerializeField] private bool hasRun = false;
     [SerializeField] private float turnSpeed = 65f;
     private Quaternion currentRotation;
@@ -55,9 +56,10 @@ public class Player_Input : MonoBehaviour
 
     private void Awake()
     {
-        carStats.frontTireGrip = baseFrontTireGrip;
-        carStats.backTireGrip = baseBackTireGrip;
-        carStats.tireMass = baseTireMass;
+        baseFrontTireGrip = carStats.frontTireGrip;
+        baseBackTireGrip = carStats.backTireGrip;
+        baseTireMass = carStats.tireMass;
+        speedLimit = carStats.speedLimit;
         carInputs = new Car_Inputs();
         wheelTurning = GetComponent<frontWheelTurning>();
     }
@@ -115,11 +117,11 @@ public class Player_Input : MonoBehaviour
     void checkVelocity()
     {
         currentSpeed = carRigidbody.linearVelocity.magnitude;
-        float offset = currentSpeed - carStats.speedLimit;
+        float offset = currentSpeed - speedLimit;
         getAccelerationDirection();
         if (accelerationDirection.z == 1)
         {
-            if (currentSpeed > carStats.speedLimit)
+            if (currentSpeed > speedLimit)
             {
                 carRigidbody.AddForceAtPosition(-moveDirection * offset, wheelTransform.position);
                 //Debug.Log("car speed: " + carRigidbody.linearVelocity.magnitude);
@@ -127,7 +129,7 @@ public class Player_Input : MonoBehaviour
         }
         else if (accelerationDirection.z == -1)
         {
-            if (currentSpeed > Mathf.Abs(carStats.speedLimit))
+            if (currentSpeed > Mathf.Abs(speedLimit))
             {
                 carRigidbody.AddForceAtPosition(moveDirection * offset, wheelTransform.position);
             }

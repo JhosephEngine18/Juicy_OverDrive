@@ -69,7 +69,7 @@ MonoBehaviour:
   FRWheelControl: {fileID: 0}
   FLWheelControl: {fileID: 0}
   carRigidBody: {fileID: 0}
-  carStats: {fileID: 0}
+  carStats: {fileID: 11400000, guid: 24d19ae99259d3344b8a7eb46c3e00e1, type: 2}
 --- !u!1001 &7797799186716484280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80,15 +80,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 00a2139fe8b4da34f9348b00668d1f76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.016874
+      value: 11.597913
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 00a2139fe8b4da34f9348b00668d1f76, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: 0.0000009536743
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 00a2139fe8b4da34f9348b00668d1f76, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.54079247
+      value: -9.912317
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 00a2139fe8b4da34f9348b00668d1f76, type: 3}
       propertyPath: m_LocalRotation.w
