@@ -1678,8 +1678,8 @@ MonoBehaviour:
   - {fileID: 880548526}
   - {fileID: 953138509}
   index: 0
-  TurningSpeed: 75
-  Movespeed: 50
+  TurningSpeed: 85
+  Movespeed: 60
   Wheels:
   - {fileID: 1556918068}
   - {fileID: 1556918067}
@@ -16122,6 +16122,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 471f4d17211d7954da9788c13752ae99, type: 3}
       propertyPath: m_Name
       value: Carrito2pivotes
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 471f4d17211d7954da9788c13752ae99, type: 3}
+      propertyPath: m_TagString
+      value: npc
       objectReference: {fileID: 0}
     - target: {fileID: 2703776080434385778, guid: 471f4d17211d7954da9788c13752ae99, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
