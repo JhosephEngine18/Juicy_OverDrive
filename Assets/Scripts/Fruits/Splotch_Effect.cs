@@ -26,7 +26,7 @@ public class Splotch_Effect : MonoBehaviour
         Beetle = GameObject.FindWithTag("car");
         FRWheel = GameObject.FindWithTag("FRWheel");
         FLWheel = GameObject.FindWithTag("FLWheel");
-        splotch = Beetle.GetComponent<itemInventory>();
+        //splotch = Beetle.GetComponent<itemInventory>();
         FRWheelControl = FRWheel.GetComponent<Player_Input>();
         FLWheelControl = FLWheel.GetComponent<Player_Input>();
     }

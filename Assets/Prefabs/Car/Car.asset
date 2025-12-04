@@ -19,6 +19,6 @@ MonoBehaviour:
   minSpeed: 1
   maxSpeed: 5
   speedLimit: 30
-  frontTireGrip: 0.92992187
-  backTireGrip: 0.92992187
+  frontTireGrip: 0.7854715
+  backTireGrip: 0.7854715
   tireMass: 5
