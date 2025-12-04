@@ -21,13 +21,13 @@ public class StartRace : MonoBehaviour
 
     IEnumerator Startgame()
     {
-        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
         counter = 1;
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(1.5f);
         counter = 2;
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1.5f);
         counter = 3;
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1f);
         Race = true;
         playerInput[0].enabled = true;
         playerInput[1].enabled = true;
