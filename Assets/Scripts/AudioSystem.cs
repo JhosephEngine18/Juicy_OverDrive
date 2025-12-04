@@ -21,6 +21,9 @@ public class AudioSystem : MonoBehaviour
     public GameObject BackgroundMusic;
     public StartRace StartRace;
     
+    [Header("UI Reference")]
+    public GameObject PauseMenu, OptionsMenu;
+    
     private void OnEnable()
     {
         carInputs.Enable();
@@ -44,7 +47,7 @@ public class AudioSystem : MonoBehaviour
         PitchCarInstance = RuntimeManager.CreateInstance(PitchCarSound);
         BakeCarInstance = RuntimeManager.CreateInstance(BakeCarSound);
         PitchCarInstance.start();
-        PitchCarInstance.setVolume(2f);
+        PitchCarInstance.setVolume(1f);
     }
 
     // Update is called once per frame
@@ -59,6 +62,15 @@ public class AudioSystem : MonoBehaviour
             BakeCarInstance.release();
         }
         PitchCarInstance.setPitch(Math.Clamp(rb.linearVelocity.magnitude * pitch, 0, 1));
+        
+        if (PauseMenu.activeInHierarchy|| OptionsMenu.activeInHierarchy)
+        {
+            PitchCarInstance.setVolume(0f);
+        }
+        else
+        {
+            PitchCarInstance.setVolume(2f);
+        }
     }
 
     private void FixedUpdate()
@@ -67,6 +79,7 @@ public class AudioSystem : MonoBehaviour
         {
             BackgroundMusic.SetActive(true);
         }
+        
     }
 
     private void OnDestroy()

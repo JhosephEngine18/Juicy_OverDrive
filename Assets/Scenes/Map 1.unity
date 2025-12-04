@@ -11037,6 +11037,8 @@ MonoBehaviour:
     Path: event:/SFX/Break
   BackgroundMusic: {fileID: 394842993}
   StartRace: {fileID: 1689316181}
+  PauseMenu: {fileID: 5599185116305598346}
+  OptionsMenu: {fileID: 1882580503}
 --- !u!1001 &1546810257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12305,6 +12307,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Race: 0
+  playerInput:
+  - {fileID: 1695007701}
+  - {fileID: 1504534780}
 --- !u!114 &1695007699
 MonoBehaviour:
   m_ObjectHideFlags: 0

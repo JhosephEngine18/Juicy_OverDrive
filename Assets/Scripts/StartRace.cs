@@ -7,9 +7,14 @@ public class StartRace : MonoBehaviour
     private float counter = 0;
     public bool Race = false;
     public Player_Input[] playerInput;
-    void Start()
+
+    private void Awake()
     {
         StartCoroutine(Startgame());
+    }
+
+    void Start()
+    {
         playerInput[0].enabled = false;
         playerInput[1].enabled = false;
     }
