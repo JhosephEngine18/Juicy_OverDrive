@@ -21,6 +21,7 @@ public class StartRace : MonoBehaviour
 
     IEnumerator Startgame()
     {
+        WaitForEndOfFrame wait = new WaitForEndOfFrame();
         counter = 1;
         yield return new WaitForSeconds(0.4f);
         counter = 2;
