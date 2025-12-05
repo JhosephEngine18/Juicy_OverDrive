@@ -26,14 +26,15 @@ public class UIGameplay : MonoBehaviour
     
     IEnumerator Startgame()
     {
+        yield return new WaitForEndOfFrame();
         Countdown.text = "1";
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(1f);
         Countdown.text = "2";
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1f);
         Countdown.text = "3";
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1f);
         Countdown.text = "YA";
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         Countdown.enabled = false;
     }
     
