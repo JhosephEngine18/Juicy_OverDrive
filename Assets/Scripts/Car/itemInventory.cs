@@ -28,7 +28,7 @@ public class itemInventory : MonoBehaviour
     [Header("Splotch Stats")]
     public bool didSplotchHappen = false;
 
-
+    private bool itemOnUse = false;
     public enum fruitType
     {
         None,
@@ -96,7 +96,7 @@ public class itemInventory : MonoBehaviour
 
     void powerupManager () 
     {
-        if (useItem.IsPressed()) 
+        if (useItem.WasPressedThisFrame() && !itemOnUse) 
         {
             Debug.Log("Le picaste");
             MixFruits(powerList[0], powerList[1]);
@@ -105,14 +105,16 @@ public class itemInventory : MonoBehaviour
     
     IEnumerator Chile()
     {
-        carStats.speedLimit = 40;
-        carStats.maxSpeed = 10;
+        carStats.speedLimit += 15;
+        carStats.maxSpeed += 10;
         carRigidBody.AddForceAtPosition(Vector3.forward * (100 * Time.fixedDeltaTime), FRWheelTransform.position);
         carRigidBody.AddForceAtPosition(Vector3.forward * (100 * Time.fixedDeltaTime), FLWheelTransform.position);
+        itemOnUse = true;
         yield return new WaitForSeconds(5f);
+        itemOnUse = false;
         carStats.minSpeed = 1;
-        carStats.maxSpeed = 5;
-        carStats.speedLimit = 30;
+        carStats.maxSpeed -= 10;
+        carStats.speedLimit -= 15;
         powerList[0] = 0;
         powerList[1] = 0;
         yield return null;
