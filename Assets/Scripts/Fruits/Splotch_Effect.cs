@@ -18,8 +18,7 @@ public class Splotch_Effect : MonoBehaviour
     [SerializeField]private itemInventory inventory;
     private itemInventory splotch;
     private Rigidbody carRB;
-
-    private bool didSplotchHappen = false;
+    
 
     private void Start()
     {

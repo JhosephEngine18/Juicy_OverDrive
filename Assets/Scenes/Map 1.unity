@@ -20051,6 +20051,8 @@ MonoBehaviour:
   FRWheelTransform: {fileID: 1504534772}
   FLWheelTransform: {fileID: 1504534785}
   ThrowPoint: {fileID: 0}
+  speedBoost: 1
+  ChiliSpeedLimit: 35
   moraSplotch: {fileID: 0}
   _CherryBomb: {fileID: 0}
   throwForce: 10

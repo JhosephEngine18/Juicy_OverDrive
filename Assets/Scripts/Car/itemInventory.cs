@@ -13,6 +13,13 @@ public class itemInventory : MonoBehaviour
     [SerializeField]private Transform FRWheelTransform;
     [SerializeField]private Transform FLWheelTransform;
     [SerializeField]private Transform ThrowPoint;
+
+    [Header("Chili Powerup")] 
+    [SerializeField] private float speedBoost;
+    [SerializeField] private float ChiliSpeedLimit;
+    private float baseMinSpeed;
+    private float baseMaxSpeed;
+    private float baseSpeedLimit;
     [Header("Item Prefabs")]
     public GameObject moraSplotch;
     public GameObject _CherryBomb;
@@ -57,7 +64,9 @@ public class itemInventory : MonoBehaviour
     private void Start()
     {
         useItem = car.FindAction("Throw");
-        
+        baseMinSpeed = carStats.minSpeed;
+        baseMaxSpeed = carStats.maxSpeed;
+        baseSpeedLimit = carStats.speedLimit;
     }
 
     private void OnEnable()
@@ -105,14 +114,14 @@ public class itemInventory : MonoBehaviour
     
     IEnumerator Chile()
     {
-        carStats.speedLimit = 40;
-        carStats.maxSpeed = 10;
+        carStats.speedLimit = ChiliSpeedLimit;
+        carStats.maxSpeed += speedBoost;
         carRigidBody.AddForceAtPosition(Vector3.forward * (100 * Time.fixedDeltaTime), FRWheelTransform.position);
         carRigidBody.AddForceAtPosition(Vector3.forward * (100 * Time.fixedDeltaTime), FLWheelTransform.position);
         yield return new WaitForSeconds(5f);
-        carStats.minSpeed = 1;
-        carStats.maxSpeed = 5;
-        carStats.speedLimit = 30;
+        carStats.minSpeed = baseMinSpeed;
+        carStats.maxSpeed = baseMaxSpeed;
+        carStats.speedLimit = baseSpeedLimit;
         powerList[0] = 0;
         powerList[1] = 0;
         yield return null;
